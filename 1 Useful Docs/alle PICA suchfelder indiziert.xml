@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta name="viewport" content="width=device-width" /><title>https://sru.k10plus.de/opac-de-627</title><link rel="stylesheet" type="text/css" href="resource://content-accessible/viewsource.css" /></head><body id="viewsource" class="highlight" style="tab-size: 4"><pre id="line1"><span></span><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span>
+<span id="line2"></span></span><span>&lt;<span class="start-tag">zs:explainResponse</span> <span class="attribute-name">xmlns:zs</span>="<a class="attribute-value">http://docs.oasis-open.org/ns/search-ws/sruResponse</a>"&gt;</span><span></span><span>&lt;<span class="start-tag">zs:version</span>&gt;</span><span>2.0</span><span>&lt;/<span class="end-tag">zs:version</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:record</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:recordSchema</span>&gt;</span><span>http://explain.z3950.org/dtd/2.0/</span><span>&lt;/<span class="end-tag">zs:recordSchema</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:recordXMLEscaping</span>&gt;</span><span>xml</span><span>&lt;/<span class="end-tag">zs:recordXMLEscaping</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:recordData</span>&gt;</span><span></span><span>&lt;<span class="start-tag">explain</span> <span class="attribute-name">xmlns</span>="<a class="attribute-value">http://explain.z3950.org/dtd/2.0/</a>"&gt;</span><span>
+<span id="line3"></span>
+<span id="line4"></span>    </span><span>&lt;<span class="start-tag">serverInfo</span> <span class="attribute-name">protocol</span>="<a class="attribute-value">SRU</a>" <span class="attribute-name">version</span>="<a class="attribute-value">1.1</a>"&gt;</span><span>
+<span id="line5"></span>	</span><span>&lt;<span class="start-tag">host</span>&gt;</span><span>0.0.0.0</span><span>&lt;/<span class="end-tag">host</span>&gt;</span><span>
+<span id="line6"></span>	</span><span>&lt;<span class="start-tag">port</span>&gt;</span><span>8210</span><span>&lt;/<span class="end-tag">port</span>&gt;</span><span>
+<span id="line7"></span>	</span><span>&lt;<span class="start-tag">database</span>&gt;</span><span>opac-de-627</span><span>&lt;/<span class="end-tag">database</span>&gt;</span><span>
+<span id="line8"></span>    </span><span>&lt;/<span class="end-tag">serverInfo</span>&gt;</span><span>
+<span id="line9"></span>
+<span id="line10"></span>    </span><span>&lt;<span class="start-tag">databaseInfo</span>&gt;</span><span>
+<span id="line11"></span>	</span><span>&lt;<span class="start-tag">title</span> <span class="attribute-name">lang</span>="<a class="attribute-value">en</a>" <span class="attribute-name">primary</span>="<a class="attribute-value">true</a>"&gt;</span><span>K10plus-Verbundkatalog</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line12"></span>	</span><span>&lt;<span class="start-tag">description</span> <span class="attribute-name">lang</span>="<a class="attribute-value">en</a>" <span class="attribute-name">primary</span>="<a class="attribute-value">true</a>"&gt;</span><span>GBV database</span><span>&lt;/<span class="end-tag">description</span>&gt;</span><span>
+<span id="line13"></span>	</span><span>&lt;<span class="start-tag">author</span>&gt;</span><span>Verbundzentrale des GBV (VZG)</span><span>&lt;/<span class="end-tag">author</span>&gt;</span><span> 
+<span id="line14"></span>	</span><span>&lt;<span class="start-tag">contact</span>&gt;</span><span>gbv@gbv.de</span><span>&lt;/<span class="end-tag">contact</span>&gt;</span><span> 
+<span id="line15"></span>	</span><span>&lt;<span class="start-tag">extent</span>&gt;</span><span>Gemeinsamer Bibliotheksverbund (GBV)</span><span>&lt;/<span class="end-tag">extent</span>&gt;</span><span> 
+<span id="line16"></span>	</span><span>&lt;<span class="start-tag">langUsage</span> <span class="attribute-name">codes</span>="<a class="attribute-value">du ge en fr</a>"&gt;</span><span>Records are in Dutch, German, English, French and other languages</span><span>&lt;/<span class="end-tag">langUsage</span>&gt;</span><span> 
+<span id="line17"></span>    </span><span>&lt;/<span class="end-tag">databaseInfo</span>&gt;</span><span>
+<span id="line18"></span>
+<span id="line19"></span>    </span><span>&lt;<span class="start-tag">indexInfo</span>&gt;</span><span>
+<span id="line20"></span>	</span><span>&lt;<span class="start-tag">set</span> <span class="attribute-name">name</span>="<a class="attribute-value">cql</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value">info:srw/cql-context-set/1/cql-v1.1</a>"<span>/</span>&gt;</span><span>
+<span id="line21"></span>	</span><span>&lt;<span class="start-tag">set</span> <span class="attribute-name">name</span>="<a class="attribute-value">pica</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value">info:srw/cql-context-set/5/pica-v1.0</a>"<span>/</span>&gt;</span><span>
+<span id="line22"></span>	</span><span>&lt;<span class="start-tag">set</span> <span class="attribute-name">name</span>="<a class="attribute-value">dc</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value">info:srw/cql-context-set/1/dc-v1.1</a>"<span>/</span>&gt;</span><span>
+<span id="line23"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line24"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ALL] Alle Wörter ohne Volltext</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line25"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>all</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line26"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line27"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line28"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TXT] Volltextsuche</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line29"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>txt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line30"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line31"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line32"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TIT] Titel (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line33"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>tit</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line34"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line35"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line36"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TIT] Titel (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line37"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>title</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line38"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line39"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line40"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PER] Person (FE)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line41"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>per</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line42"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line43"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line44"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PER] Person (FE)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line45"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>author</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line46"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line47"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line48"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PER] Person (FE)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line49"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>creator</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line50"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line51"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line52"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[GPK] Person/Körperschaft (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line53"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>gpk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line54"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line55"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line56"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PSW] Person (SE)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line57"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>psw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line58"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line59"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line60"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[THM] Alle Themen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line61"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>thm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line62"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line63"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line64"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SLW] Schlagwörter</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line65"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>slw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line66"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line67"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line68"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[WTP] Werktitel (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line69"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>wtp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line70"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line71"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line72"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZTI] Titel Gesamtaufnahme (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line73"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>zti</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line74"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line75"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line76"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SER] Serie, Zeitschrift, MTM (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line77"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ser</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line78"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line79"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line80"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ISB] ISBN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line81"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>isb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line82"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line83"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line84"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ISS] ISSN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line85"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>iss</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line86"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line87"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line88"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[NUM] Nummern (allgemein)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line89"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>num</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line90"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line91"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line92"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KOR] Körperschaft, Konferenz, Geografikum (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line93"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>kor</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line94"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line95"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line96"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KON] Konferenz (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line97"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>kon</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line98"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line99"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line100"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VER] Veröffentlichungsangaben</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line101"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ver</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line102"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line103"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line104"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PRK] Provenienzen (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line105"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>prk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line106"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line107"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line108"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PRP] Provenienzen (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line109"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>prp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line110"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line111"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line112"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[URK] URL (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line113"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>urk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line114"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line115"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line116"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BKL] Basisklassifikation</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line117"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bkl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line118"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line119"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line120"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PPN] Pica-Produktionsnummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line121"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ppn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line122"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line123"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line124"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PPN] Pica-Produktionsnummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line125"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>resourceidentifier</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line126"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line127"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line128"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PRS] Person (Phrase: Nachname, Vorname)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line129"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>prs</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line130"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line131"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line132"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KSK] Körperschaft, Konferenz, Geografikum (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line133"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ksk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line134"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line135"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line136"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KNS] Konferenz (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line137"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>kns</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line138"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line139"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line140"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LCN] LoC-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line141"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lcn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line142"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line143"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line144"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BNB] BNB-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line145"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bnb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line146"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line147"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line148"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DDC] Dewey Decimal Classification (Titel)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line149"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ddc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line150"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line151"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line152"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LCC] Library of Congress Classification</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line153"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lcc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line154"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line155"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line156"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[NLM] NLM-Klassification</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line157"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>nlm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line158"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line159"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line160"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[MSC] Mathematics Subject Classification</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line161"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>msc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line162"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line163"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line164"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LSY] Lokale Systematiken (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line165"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lsy</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line166"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line167"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line168"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SW] Schlagwörter GND (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line169"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line170"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line171"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line172"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SW] Schlagwörter GND (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line173"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>subject</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line174"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line175"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line176"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[MSH] Medical Subject Headings</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line177"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>msh</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line178"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line179"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line180"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LSH] LoC Subject Heading</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line181"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lsh</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line182"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line183"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line184"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LSW] Lokales Schlagwort/lokale Notation (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line185"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lsw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line186"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line187"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line188"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[JAH] Jahresangabe</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line189"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>jah</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line190"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line191"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line192"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SP] Schlagwort GND (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line193"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line194"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line195"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line196"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DBN] DNB-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line197"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>dbn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line198"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line199"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line200"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SPR] Sprache</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line201"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>spr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line202"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line203"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line204"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SPR] Sprache</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line205"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>language</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line206"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line207"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line208"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BIB] Bibliotheksnummer (ELN)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line209"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bib</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line210"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line211"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line212"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VLO] Veröffentlichungssort</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line213"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vlo</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line214"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line215"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line216"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[IMS] Intermediärsprache</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line217"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ims</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line218"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line219"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line220"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[AED] Kennung und Änderungsdatum</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line221"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>aed</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line222"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line223"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line224"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VLG] Verlag</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line225"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vlg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line226"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line227"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line228"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VLG] Verlag</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line229"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">dc</a>"&gt;</span><span>publisher</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line230"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line231"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line232"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[URL] URL (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line233"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>url</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line234"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line235"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line236"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SPZ] Sprache der Zusammenfassung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line237"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>spz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line238"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line239"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line240"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SGE] Bibliothekssigel</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line241"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sge</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line242"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line243"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line244"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZDB] ZDB-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line245"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>zdb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line246"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line247"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line248"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LCD] Ländercode (Erscheinungsland)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line249"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lcd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line250"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line251"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line252"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[HSS] Hochschulschriftenvermerk</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line253"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>hss</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line254"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line255"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line256"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ISM] ISMN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line257"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ism</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line258"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line259"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line260"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ISR] ISRN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line261"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>isr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line262"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line263"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line264"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DOI] DOI</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line265"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>doi</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line266"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line267"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line268"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OSP] Originalsprache</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line269"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>osp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line270"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line271"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line272"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[URN] URN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line273"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>urn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line274"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line275"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line276"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OCN] OCLC-Nummer (WorldCat ID)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line277"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ocn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line278"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line279"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line280"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[RKZ] Regionalkennzeichen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line281"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>rkz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line282"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line283"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line284"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[WVN] WV-Nummer/CIP-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line285"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>wvn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line286"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line287"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line288"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[GAT] Gattungsbegriffe (Alte Drucke)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line289"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>gat</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line290"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line291"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line292"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[COD] Codierte Angaben</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line293"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>cod</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line294"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line295"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line296"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SC] Sprachencode Normdaten</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line297"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line298"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line299"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line300"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BNM] Besitznachweis Master</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line301"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bnm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line302"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line303"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line304"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LC] Ländercode (GND)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line305"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line306"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line307"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line308"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[XPL] Produktsigel lokal</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line309"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>xpl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line310"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line311"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line312"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SCR] Schriftcode</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line313"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>scr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line314"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line315"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line316"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[STA] Status</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line317"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sta</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line318"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line319"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line320"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SSW] Schlagwort Fremddaten (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line321"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ssw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line322"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line323"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line324"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWP] Schlagwort Person (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line325"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line326"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line327"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line328"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWS] Schlagwort Sachbegriff (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line329"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sws</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line330"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line331"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line332"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWG] Schlagwort Geografikum (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line333"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line334"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line335"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line336"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWC] Schlagwort Konferenz (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line337"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line338"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line339"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line340"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWK] Schlagwort Körperschaft (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line341"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line342"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line343"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line344"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWU] Schlagwort Werktitel (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line345"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swu</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line346"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line347"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line348"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWZ] Schlagwort Zeit (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line349"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line350"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line351"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line352"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BEP] Besetzung, Form/Gattung bei Musikalien</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line353"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bep</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line354"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line355"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line356"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[HS] Bevorzugter Name/bevorzugte Benennung (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line357"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>hs</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line358"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line359"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line360"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OB] Schlagwort als Beziehung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line361"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ob</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line362"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line363"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line364"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VT] Bevorzugter Name, bevorzugte Benennung in einem anderen Datenbestand</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line365"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line366"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line367"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line368"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VW] Abweichender Name/abweichende Benennung (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line369"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line370"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line371"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line372"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PST] Person (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line373"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>pst</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line374"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line375"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line376"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PLA] Produktionsland bei Filmen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line377"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>pla</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line378"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line379"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line380"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DRU] Drucker</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line381"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>dru</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line382"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line383"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line384"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LPP] Lokale PPN</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line385"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lpp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line386"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line387"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line388"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FBW] Beschreibung Buchschmuck (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line389"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fbw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line390"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line391"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line392"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FPE] Beschreibung Einband (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line393"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fpe</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line394"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line395"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line396"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FBP] Beschreibung Buchschmuck (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line397"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fbp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line398"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line399"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line400"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LNR] Identnummer (lokal)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line401"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lnr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line402"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line403"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line404"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[REB] Abrufzeichen Lokaldaten</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line405"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>reb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line406"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line407"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line408"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SGB] Signatur (mit Blanks und ,.-)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line409"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sgb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line410"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line411"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line412"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BZK] Beziehungskennzeichnung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line413"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bzk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line414"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line415"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line416"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[RVK] Regensburger Verbundklassifikation (RVK)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line417"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>rvk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line418"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line419"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line420"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SYS] Systematiken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line421"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sys</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line422"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line423"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line424"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SGR] Sachgruppen DNB bis 2003</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line425"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sgr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line426"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line427"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line428"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SGD] DDC-Sachgruppen DNB, ZDB</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line429"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sgd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line430"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line431"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line432"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FNO] Notation (unterschiedliche Klassifikationen)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line433"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fno</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line434"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line435"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line436"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FNB] Notation Benennung (unterschiedliche Klassifikationen)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line437"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fnb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line438"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line439"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line440"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[RTE] Texthinweise zu elektronischen Ressourcen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line441"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>rte</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line442"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line443"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line444"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[AN] Bevorzugter Name/bevorzugte Benennung (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line445"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>an</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line446"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line447"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line448"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SKT] Schlagwortfolgen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line449"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>skt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line450"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line451"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line452"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BKT] Schlagwortfolgen (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line453"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bkt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line454"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line455"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line456"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[AEE] Änderungsdatum Exemplar</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line457"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>aee</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line458"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line459"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line460"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SXN] Neuanlagedatum Exemplar</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line461"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sxn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line462"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line463"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line464"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BBL] Bibliogr. Gattung und Status (Lokale Normdaten)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line465"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bbl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line466"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line467"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line468"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OLC] OLC Sortstring</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line469"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>olc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line470"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line471"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line472"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TAW] Tonart</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line473"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>taw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line474"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line475"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line476"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[NMW] Numerische Kennzeichnung Musikwerk</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line477"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>nmw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line478"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line479"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line480"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BSW] Besetzung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line481"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bsw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line482"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line483"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line484"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FWW] Form des Werks</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line485"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fww</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line486"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line487"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line488"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ADW] Datentraeger</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line489"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>adw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line490"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line491"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line492"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[AIW] Art des Inhalts</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line493"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>aiw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line494"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line495"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line496"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[AMW] Musikalische Ausgabeform</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line497"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>amw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line498"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line499"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line500"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZGW] Zielgruppe</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line501"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>zgw</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line502"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line503"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line504"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[HTP] Haupttitel (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line505"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>htp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line506"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line507"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line508"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TPR] Titel (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line509"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>tpr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line510"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line511"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line512"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VDR] VD16-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line513"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vdr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line514"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line515"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line516"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VDS] VD17-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line517"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vds</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line518"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line519"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line520"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VDT] VD18-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line521"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vdt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line522"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line523"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line524"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SBN] Bibliografischer Nachweis (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line525"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sbn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line526"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line527"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line528"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[EKI] Identifikationsnummer der ersterfassenden Institution</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line529"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>eki</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line530"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line531"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line532"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DUH] Persistente Identifikatoren</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line533"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>duh</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line534"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line535"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line536"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[XPR] Produktsigel</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line537"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>xpr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line538"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line539"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line540"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SWN] SWB-Pica-Produktionsnummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line541"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>swn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line542"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line543"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line544"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SLS] Selektionsschlüssel</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line545"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sls</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line546"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line547"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line548"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[DDN] Dewey Decimal Classification (GND)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line549"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ddn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line550"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line551"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line552"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OPE] Open Access</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line553"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ope</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line554"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line555"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line556"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SKU] Sigel kurz (fuer Sicht)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line557"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sku</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line558"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line559"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line560"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LSG] Lokale Notation auf bibliografischer Ebene</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line561"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lsg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line562"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line563"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line564"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LSC] Lokales Schlagwort auf bibliografischer Ebene</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line565"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lsc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line566"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line567"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line568"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VB] Verwandtes Schlagwort</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line569"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line570"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line571"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line572"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[RCC] Code für Beziehungen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line573"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>rcc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line574"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line575"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line576"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BST] Bestandsschutzmaßnahmen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line577"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bst</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line578"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line579"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line580"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ONX] Bezugswerk zur URL</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line581"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>onx</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line582"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line583"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line584"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TBS] Teilbestands- und Klassifikationskennzeichen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line585"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>tbs</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line586"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line587"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line588"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[NC] Nutzungskennzeichen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line589"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>nc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line590"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line591"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line592"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[HI] Angaben bei (musikalischen) Werken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line593"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>hi</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line594"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line595"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line596"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[GAD] Gattungsbegriffe DNB</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line597"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>gad</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line598"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line599"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line600"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PNE] Person (Normdaten, bevorz. Name)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line601"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>pne</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line602"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line603"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line604"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TBZ] Teilbestandskennzeichen (lokale Normdaten)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line605"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>tbz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line606"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line607"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line608"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SSG] SSG-Nummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line609"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ssg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line610"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line611"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line612"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SFK] SSG-Nummer/FID-Kennzeichen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line613"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sfk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line614"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line615"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line616"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[PZT] Pommersche Zeitungen</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line617"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>pzt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line618"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line619"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line620"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BAB] Bibliothek_2</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line621"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bab</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line622"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line623"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line624"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FSL] Fernleih-Selektion</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line625"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fsl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line626"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line627"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line628"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[WTU] Werktitel und Urheber</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line629"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>wtu</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line630"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line631"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line632"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[STT] STW Freies Schlagwort</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line633"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>stt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line634"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line635"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line636"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[STV] STW Schlagwort - Veröffentlichungsart</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line637"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>stv</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line638"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line639"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line640"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SSP] Sonstiges Schlagwort (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line641"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ssp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line642"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line643"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line644"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SLK] Datum und Selektionsschluessel</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line645"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>slk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line646"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line647"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line648"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[XLA] Lieferungs-Nummer (1-5)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line649"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>xla</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line650"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line651"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line652"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ULV] URL Volltext</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line653"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ulv</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line654"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line655"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line656"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ULC] URL Kataloganreicherung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line657"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ulc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line658"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line659"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line660"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FSH] Schlagwort (unterschiedliche Thesauri)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line661"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fsh</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line662"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line663"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line664"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SPP] Schlagwort Projekte (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line665"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>spp</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line666"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line667"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line668"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[GAC] Änderungscodierung (GND)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line669"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>gac</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line670"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line671"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line672"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SMB] Code zur Selektion und maschinellen Bearbeitung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line673"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>smb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line674"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line675"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line676"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SNR] Sonstige Nummern</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line677"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>snr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line678"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line679"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line680"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[NID] Identnummer (GND, RVK)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line681"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>nid</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line682"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line683"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line684"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZNM] Akzessionsnummer</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line685"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>znm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line686"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line687"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line688"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[RTI] Gesamttitel fR (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line689"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>rti</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line690"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line691"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line692"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VSE] Gesamttitel fR (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line693"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vse</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line694"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line695"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line696"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SHA] Titel Gesamtaufnahme (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line697"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sha</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line698"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line699"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line700"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[GTI] Gesamttitel (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line701"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>gti</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line702"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line703"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line704"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[MTI] Gesamttitel MTM (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line705"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>mti</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line706"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line707"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line708"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SN] GND-Systematik</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line709"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sn</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line710"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line711"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line712"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ASB] Allgemeine Systematik für Bibliotheken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line713"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>asb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line714"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line715"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line716"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SSD] Systematik der Stadtbibliothek Duisburg</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line717"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ssd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line718"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line719"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line720"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SFB] Systematik für Bibliotheken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line721"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sfb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line722"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line723"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line724"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KAB] Klassifikation für Allgemeinbibliotheken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line725"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>kab</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line726"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line727"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line728"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[EKZ] Systematiken der ekz</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line729"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ekz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line730"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line731"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line732"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SYO] Systematiken für Öffentliche Bibliotheken</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line733"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>syo</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line734"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line735"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line736"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[EXC] Exemplarbezogener Kommentar (Code)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line737"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>exc</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line738"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line739"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line740"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[EXK] Exemplarbezogener Kommentar</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line741"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>exk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line742"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line743"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line744"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[FNM] Fußnoten Musik</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line745"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>fnm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line746"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line747"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line748"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[WDM] Widmungsempfänger</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line749"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>wdm</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line750"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line751"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line752"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZSR] Zensor</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line753"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>zsr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line754"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line755"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line756"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BTR] Beiträger</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line757"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>btr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line758"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line759"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line760"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LRL] URL, URN (lokal, Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line761"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lrl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line762"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line763"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line764"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BBG] Bibliografische Gattung und Status</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line765"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bbg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line766"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line767"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line768"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[UUU] URL vollständig (Phrase)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line769"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>uuu</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line770"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line771"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line772"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ENT] Entitätencode</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line773"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ent</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line774"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line775"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line776"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TMB] Gesamttitel MTM (Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line777"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>tmb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line778"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line779"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line780"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LRK] URL, URN (lokal, Stichwort)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line781"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lrk</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line782"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line783"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line784"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[BSL] Bibliographischer Selektionskode</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line785"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>bsl</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line786"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line787"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line788"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ABZ] Ausgabebezeichnung</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line789"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>abz</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line790"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line791"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line792"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[IMD] Inhalts-, Medien-, Datentraegertyp</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line793"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>imd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line794"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line795"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line796"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[VRB] VD18 redigierende Bibliothek</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line797"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>vrb</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line798"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line799"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line800"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LFD] Identnummer (Importdaten)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line801"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lfd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line802"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line803"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line804"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[OSG] Online Contents SSG</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line805"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>osg</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line806"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line807"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line808"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[KAQ] Katalogisierungsquelle</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line809"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>kaq</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line810"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line811"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line812"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ODI] OSG-Adi</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line813"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>odi</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line814"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line815"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line816"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[CLT] Siehe auch</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line817"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>clt</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line818"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line819"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line820"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[JHR] Erscheinungsjahr</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line821"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>jhr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line822"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line823"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line824"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[MAT] Materialart</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line825"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>mat</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line826"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line827"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line828"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[TAA] Sprachcode</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line829"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>taa</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line830"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line831"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line832"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[LND] Ländercode</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line833"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>lnd</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line834"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line835"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line836"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[SUP] Sysflag</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line837"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>sup</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line838"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line839"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line840"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[ZTR] Zeitraum</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line841"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>ztr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line842"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line843"></span>	</span><span>&lt;<span class="start-tag">index</span>&gt;</span><span>
+<span id="line844"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>[XMR] Master Record Status</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line845"></span>	    </span><span>&lt;<span class="start-tag">map</span>&gt;</span><span></span><span>&lt;<span class="start-tag">name</span> <span class="attribute-name">set</span>="<a class="attribute-value">pica</a>"&gt;</span><span>xmr</span><span>&lt;/<span class="end-tag">name</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">map</span>&gt;</span><span>
+<span id="line846"></span>	</span><span>&lt;/<span class="end-tag">index</span>&gt;</span><span>
+<span id="line847"></span>    </span><span>&lt;/<span class="end-tag">indexInfo</span>&gt;</span><span>
+<span id="line848"></span>
+<span id="line849"></span>    </span><span>&lt;<span class="start-tag">schemaInfo</span>&gt;</span><span>
+<span id="line850"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">marcxml-solr</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line851"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>MARC21 XML SOLR</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line852"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line853"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">srw-dc</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line854"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>SRW-encoded simple Dublin Core</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line855"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line856"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">gribxml</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line857"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>BHL-Europe / GRIB XML</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line858"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line859"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">dc</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line860"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>Dublin Core</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line861"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line862"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">oai-dc</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line863"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>OAI-encoded simple Dublin Core</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line864"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line865"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">picaxml</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line866"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>PicaXML</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line867"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line868"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">mads</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line869"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>Metadata Authority Description Schema (MADS)</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line870"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line871"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">turbomarc</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line872"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>IndexData TurboMARC</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line873"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line874"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">mods</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line875"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>MODS</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line876"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line877"></span>	</span><span>&lt;<span class="start-tag">schema</span> <span class="attribute-name">name</span>="<a class="attribute-value">marcxml</a>" <span class="attribute-name">identifier</span>="<a class="attribute-value"></a>"&gt;</span><span>
+<span id="line878"></span>	    </span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>MARC21 XML</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+<span id="line879"></span>	</span><span>&lt;/<span class="end-tag">schema</span>&gt;</span><span>
+<span id="line880"></span>    </span><span>&lt;/<span class="end-tag">schemaInfo</span>&gt;</span><span>
+<span id="line881"></span>
+<span id="line882"></span></span><span>&lt;/<span class="end-tag">explain</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">zs:recordData</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">zs:record</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:echoedExplainRequest</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:version</span>&gt;</span><span>2.0</span><span>&lt;/<span class="end-tag">zs:version</span>&gt;</span><span></span><span>&lt;<span class="start-tag">zs:recordXMLEscaping</span>&gt;</span><span>xml</span><span>&lt;/<span class="end-tag">zs:recordXMLEscaping</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">zs:echoedExplainRequest</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">zs:explainResponse</span>&gt;</span><span>
+<span id="line883"></span></span></pre></body></html>
