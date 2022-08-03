@@ -1,3 +1,4 @@
+from asyncio.log import logger
 import os #for paths
 import glob #searches files in paths
 import pandas as pd #for csv open and read
@@ -8,18 +9,20 @@ import variables #list of all variables
 import parts #smal codebits to make code cleaner
 import re
 import csv
-import logging #for logging
+import loqger
 import threading #for multithreading, work in progress
 bib_id=20735
 #Define Variables needed for BWLastCopies Search
 class BWLastCopies:
+    log=logger.log()
     def __init__(self):
         self.info=input('Print URLs? (y/n): ')
+        self.log=input('Log URLs? (y/n): ')
         self.namespaces=variables.namespaces
         self.datafield_nodes_path = "./zs:records/zs:record/zs:recordData/record/datafield"  # XPath
         self.subfield_sigil="DE-Frei129" #code="b"
-        self.titel="/home/alexander/GitHub/coding/titel.txt"
-        self.verfasser="/home/alexander/GitHub/coding/verfasser.txt"
+        self.titel=variables.titel_path
+        self.verfasser=variables.verfasser_path
         self.cleanverfasserlist=[]
         self.cleantitlelist=[]
         self.oururls=[]
