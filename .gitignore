@@ -10,3 +10,4 @@ Python/DEPRECATED/
 Python/testing/
 log/api_log.log
 log/general_log.log
+*.log
