@@ -10,5 +10,9 @@
     "Titel-test":
         {
             "Path":"C:/Users/aky547/GitHub/WorkPrograms/titel.txt"
+        },
+    "Database":
+        {
+            "Path":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/BWL.db"
         }
 }
