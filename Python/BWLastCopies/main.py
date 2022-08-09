@@ -5,6 +5,7 @@ import pandas as pd
 import variables
 from urllib.request import urlopen
 import requests
+import lxml
 
 log=logger.log()
 errmsg_gen="Error, check log/general_log.log for details"
@@ -67,11 +68,15 @@ class bwlastcopies:
         #oursearch in test only
         url=self.api_url_personal.replace("{title}",title)
         url=url.replace("{author}",author)
-        #print(url)
+        print(url)
         try:
             result=requests.get(url)        
             if result.status_code==200:
                 data=result.text
+            symbols=['Ã¶','Ã¼','Ã¤','ÃŸ']
+            replacesymbol=['ö','ä','ü','ß']
+            for i in range(len(symbols)):
+                data=data.replace(symbols[i],replacesymbol[i])
         except:
             print("error")
             log.warning_api("Error: test failed")
@@ -87,25 +92,40 @@ class bwlastcopies:
 
             
             '''
-            soup=BeautifulSoup(data,"html.parser")
+            symbols=['Ã¶','Ã¼','Ã¤','ÃŸ']
+            replacesymbol=['ö','ä','ü','ß']
+            for i in range(len(symbols)):
+                data=data.replace(symbols[i],replacesymbol[i])
+            soup=BeautifulSoup(data,"lxml")
             #print(soup.prettify())
             #in soup, find {"tag":"250","ind1":" ","ind2":" "} and print contents
             #find the title
-            '''title_field=soup.find_all("datafield",{"tag":"245","ind1":"1","ind2":"0"})
-            soup=BeautifulSoup(str(title_field),"html.parser")
-            title_field=soup.find("subfield",{"code":"a"})
-            print(title_field.text)'''
+            title_field=soup.find_all("datafield",{"tag":"245","ind1":"1","ind2":"0"})
+            soup1=BeautifulSoup(str(title_field),"lxml")
+            title_field=soup1.find("subfield",{"code":"a"})
+            title=title_field.text
+            
+           
+
+            print(title_field.text)
             #find the author
             author_field=soup.find_all("datafield",{"tag":"100","ind1":"1","ind2":" "})
-            soup=BeautifulSoup(str(author_field),"html.parser")
-            author_field=soup.find("subfield",{"code":"a"})
-            print(author_field.text)
+            soup2=BeautifulSoup(str(author_field),"lxml")
+            author_field=soup2.find("subfield",{"code":"a"})
+            try:
+                print(author_field.text)
+            except:
+                print("author_field error, fix needed")
             #find the issues
             issues_field=soup.find_all("datafield",{"tag":"250","ind1":" ","ind2":" "},{"subfield code":"a"})
-            soup=BeautifulSoup(str(issues_field),"html.parser")
-            issues_field=soup.find("subfield",{"code":"a"})
-            print(issues_field.text)
-
+            soup3=BeautifulSoup(str(issues_field),"lxml")
+            issues_field=soup3.find("subfield",{"code":"a"})
+            value=issues_field.text
+            test=value
+            if 'Ã¼' in value:
+                value=value.replace('Ã¼','ü')
+            print(value)
+            
             
             '''for field in soup.find_all("datafield",{"tag":"250","ind1":" ","ind2":" "}):
                 print(field.text)
@@ -114,4 +134,4 @@ class bwlastcopies:
    
 if __name__=="__main__":
     g=bwlastcopies()
-    g.test('Java ist auch eine Insel','Ullenboom, Christian')
+    g.test('Schrödinger programmiert Python','Elter, Stephan')
