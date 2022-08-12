@@ -6,6 +6,7 @@ import variables
 from urllib.request import urlopen
 import requests
 import lxml
+import time
 
 log=logger.log()
 errmsg_gen="Error, check log/general_log.log for details"
@@ -130,8 +131,8 @@ class bwlastcopies:
             '''for field in soup.find_all("datafield",{"tag":"250","ind1":" ","ind2":" "}):
                 print(field.text)
             '''
-    def xmlextract():
-        with open(xml_file,encoding='utf-8') as f:
+    def xmlextract(self,file):
+        with open(file,encoding='utf-8') as f:
             data=f.readlines()
         xmldata=[]
         for line in data:
@@ -145,14 +146,16 @@ class bwlastcopies:
             title=title_field.text
             x_data['title']=title
             try:
-                author_data=soup.find("datafield",{"tag":"100"})
+                author_data=soup.find("datafield",{"tag":"700"})
                 soup2=BeautifulSoup(str(author_data),"lxml")
                 author_field=soup2.find("subfield",{"code":"a"})
-                author=author_field.text
-                x_data['author']=author
+                #author=author_field.text
+                x_data['author']=author_field.text
             except:
-                author="no author"
-                x_data['author']=author
+                author_data=soup.find("datafield",{"tag":"100"})
+                soup2_1=BeautifulSoup(str(author_data),"lxml")
+                author_field=soup2_1.find("subfield",{"code":"a"})
+                print(author_field.text)
 
             try:
                 issues_data=soup.find("datafield",{"tag":"250"})
@@ -178,4 +181,5 @@ class bwlastcopies:
    
 if __name__=="__main__":
     g=bwlastcopies()
-    g.test('Schrödinger programmiert Python','Elter, Stephan')
+    #g.test('Schrödinger programmiert Python','Elter, Stephan')
+    g.xmlextract("./Python/BWLastCopies/test.xml")
