@@ -41,9 +41,10 @@ for line in data:
         de640_field=soup4.find("subfield",{"code":"z"})
         de640=de640_field.text
         x_data['DE-640']=de640
-        print
     except:
-        pass
+        de640="no de640"
+        x_data['DE-640']=de640
+    xmldata.append(x_data)
 df=pd.DataFrame(xmldata)
 df.to_csv("./Python/BWLastCopies/test.csv")
     
