@@ -6,6 +6,7 @@ import time
 import lxml
 import json
 import logger
+import request
 log=logger.log()
 log.info_general('xmlextract.py started')
 selector=input('select if the run should be a test or a full run (test/full): ')
@@ -15,7 +16,13 @@ if selector=='test':
 with open('config.json') as config_file:
     config = json.load(config_file)
     log.info_general('config.json loaded')
-file=config['XML']['Final']
+if selector=='full':
+    file=config['XML']['Final']
+elif selector=='test':
+    if selector_fine=='short':
+        file=config['XML']['Short']
+    elif selector_fine=='long':
+        file=config['XML']['Long']
 print(file)
 def search(datafile):
     log.info_general('search started')
@@ -32,6 +39,7 @@ def search(datafile):
         x_data['author']=author_search(soup)
         x_data['issue']=issue_search(soup)
         xmldata.append(x_data)
+        #request.get_xml(x_data['author'], x_data['title'])
         ''' try:
             de640_data=soup.find("datafield",{"tag":"583"})
             soup4=BeautifulSoup(str(de640_data),"lxml")
@@ -81,12 +89,20 @@ def issue_search(soup):
 def make_csv(xmldata):
     df=pd.DataFrame(xmldata)
     #create csv at current directory
-    df.to_csv(os.path.join(os.getcwd(),'BWL.csv'),index=False)
+    df.to_csv(os.path.join(os.getcwd(),'BWL1.csv'),index=False,sep='|')
 
-
+def get_request():
+    with open('BWL1.csv',encoding='utf-8') as f:
+        data=f.readlines()
+    xmldata=[]
+    for line in data:
+        linearray=line.split('|')
+        print(f'line_author {linearray[0]}')
+        #request.get_xml(line)
     
 #time.sleep(0.1)
 
 if __name__=="__main__":
-    search(file)
+    #search(file)
+    get_request()
     print("done")
