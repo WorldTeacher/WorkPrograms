@@ -11,7 +11,7 @@ class GUI:
         self.master.configure(background="white")
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.master.bind("<Alt-F4>", self.on_closing)
-
+        self.master.filename = None
         
 
     
@@ -19,14 +19,33 @@ class GUI:
         self.master.destroy()
         self.master.quit()
         exit()
+    def start_run(self):
+        self.show_file_contents()
+        self.display_message("Start run")
+        #add code to start run
+
+        
+        exit()
     def file_dialog(self):
         self.master.filename = fd.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("xml files","*.xml"),("all files","*.*")))
+    def display_message(self, message):
+        tk.Label(self.master, text=message).grid(row=1, column=0, columnspan=3)
+    def show_file_contents(self):
+        if self.master.filename:
+            with open(self.master.filename, "r") as f:
+                self.display_message(f.read())
+        else:
+            self.display_message("No file selected")
+        
+    
     def mainloop(self):
         #add a button
         self.create_button("Exit", self.on_closing, 0, 0)
-        self.create_button("Start", self.on_closing, 0, 1)
+        self.create_button("Start", self.start_run, 0, 1)
         #create a button that opens a file dialog
         self.create_button("Open", self.file_dialog, 0, 2)
+        self.display_message("Hello World!")
+        
         self.master.mainloop()
         
     #create a button

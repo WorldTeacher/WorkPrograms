@@ -15,5 +15,11 @@
         {
             "Path":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/BWL.db"
         },
-    "bibid":"20735"
+    "bibid":"20735",
+    "XML":
+        {
+            "Test-short":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/test-short.xml",
+            "Test-long":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/test.xml",
+            "Final":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/AK.P006944_D20220727_T155629.XML"
+        }
 }
