@@ -6,6 +6,7 @@ April=['01.04.2022','30.04.2022']
 Mai=['02.05.2022','31.05.2022']
 Juni=['01.06.2022','30.06.2022']
 Juli=['01.07.2022','31.07.2022']
+August=['01.08.2022','16.08.2022']
 monthlist=[März,April,Mai,Juni,Juli]
 #search for the first entry in the März list in the csv and return the count
 visitcount={}
@@ -14,6 +15,7 @@ Aprillist=0
 Mailist=0
 Junilist=0
 Julilist=0
+Augustlist=0
 for row in csv.iterrows():
     date=row[1]['Datum']
     #print(date)
@@ -28,12 +30,15 @@ for row in csv.iterrows():
         Junilist+=1
     if month=="07":
         Julilist+=1
+    if month=="08":
+        Augustlist+=1
 
 
 Aprillist=Aprillist+Märzlist
 Mailist=Mailist+Aprillist
 Junilist=Junilist+Mailist
 Julilist=Julilist+Junilist
+Augustlist=Augustlist+Julilist
 
 
 
@@ -183,6 +188,35 @@ Juli_Visitors_out=sum([Juli_e1_Out,Juli_e2_Out,Juli_he_Out])
 Juli_Visitors=max(Juli_Visitors_in,Juli_Visitors_out)
 visitcount['Juli']=Juli_Visitors
 print(f'Juli Visitors: {Juli_Visitors}')
+#print(f'August: {Julilist}, {Julilist+1}')
+August_start_e1_in=ne1_ein[Julilist+1]
+August_start_e2_in=ne2_ein[Julilist+1]
+August_start_he_in=he_ein[Julilist+1]
+August_start_e1_out=ne1_aus[Julilist+1]
+August_start_e2_out=ne2_aus[Julilist+1]
+August_start_he_out=he_aus[Julilist+1]
+#using auglist, get the data at said line
+Auguste=Augustlist-2
+if August[1]== csv['Datum']  [Auguste]:
+    August_end_e1_in=ne1_ein [Auguste]
+    August_end_e2_in=ne2_ein [Auguste]
+    August_end_he_in=he_ein  [Auguste]
+    August_end_e1_out=ne1_aus[Auguste]
+    August_end_e2_out=ne2_aus[Auguste]
+    August_end_he_out=he_aus [Auguste]
+#mathtime
+August_e1_Visitors=August_end_e1_in-August_start_e1_in
+August_e2_Visitors=August_end_e2_in-August_start_e2_in
+August_he_Visitors=August_end_he_in-August_start_he_in
+August_e1_Out=August_end_e1_out-August_start_e1_out
+August_e2_Out=August_end_e2_out-August_start_e2_out
+August_he_Out=August_end_he_out-August_start_he_out
+August_Visitors_in=sum([August_e1_Visitors,August_e2_Visitors,August_he_Visitors])
+August_Visitors_out=sum([August_e1_Out,August_e2_Out,August_he_Out])
+August_Visitors=max(August_Visitors_in,August_Visitors_out)+1
+visitcount['August']=August_Visitors
+print(f'August Visitors: {August_Visitors}')
+
 
 df=pd.DataFrame(visitcount,index=['Visitors'])
 df.to_csv('C:/Users/aky547/GitHub/WorkPrograms/Python/CSV/Besucherzusammenfassung.csv')
