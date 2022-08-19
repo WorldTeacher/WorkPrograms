@@ -1,4 +1,4 @@
-from asyncio.log import logger
+
 import os #for paths
 import glob #searches files in paths
 import pandas as pd #for csv open and read
@@ -9,7 +9,7 @@ import variables #list of all variables
 import parts #smal codebits to make code cleaner
 import re
 import csv
-import loqger
+import logger
 import threading #for multithreading, work in progress
 bib_id=20735
 #Define Variables needed for BWLastCopies Search
@@ -57,6 +57,11 @@ class BWLastCopies:
             line=line.replace("?Die?","Die")
             line=line.replace("?Das?","Das")
             line=line.replace("?The?","The")
+            line=line.replace("¬Ein¬","Ein")
+            line=line.replace("¬Der¬","Der")
+            line=line.replace("¬Die¬","Die")
+            line=line.replace("¬Das¬","Das")
+
             self.cleantitlelist.append(line)
 
         with open(b,"r") as file:

@@ -54,6 +54,8 @@ class log:
         #add handler to logger
         self.logger3.addHandler(self.handler3)
 
+
+
     def info_api(self,message):
         self.logger.info(message)
     def error_api(self,message):
@@ -90,4 +92,5 @@ class log:
         self.logger3.critical(message)
     def fatal_database(self,message):
         self.logger3.fatal(message)
+
 

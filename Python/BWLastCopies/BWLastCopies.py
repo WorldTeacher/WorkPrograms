@@ -16,8 +16,8 @@ class BWLastCopies:
         self.namespaces=variables.namespaces
         self.datafield_nodes_path = "./zs:records/zs:record/zs:recordData/record/datafield"  # XPath
         self.subfield_sigil="DE-Frei129" #code="b"
-        self.titel="/home/alexander/GitHub/coding/titel.txt"
-        self.verfasser="/home/alexander/GitHub/coding/verfasser.txt"
+        self.titel="C:/Users/aky547/GitHub/WorkPrograms/titel.txt"
+        self.verfasser="C:/Users/aky547/GitHub/WorkPrograms/verfasser.txt"
         self.cleanverfasserlist=[]
         self.cleantitlelist=[]
         self.ourlinks=[]
@@ -38,8 +38,7 @@ class BWLastCopies:
         for line in lines: #replace all symbols that might cause problems with the search
             #if !.: is in line, remove it
             line=line.replace("!","")
-            line=line.replace(".","")
-                
+            line=line.replace(".","")  
             line=line.replace(" ","%20")
             line=line.replace("\n","")
             line=line.replace("�","?")
