@@ -13,7 +13,73 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string extracomment="future button to s"/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_reihe_a">
+     <attribute name="title">
+      <string>Reihe A</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>540</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ClickMe</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>530</y>
+        <width>701</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="name">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>210</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_bwl">
+     <attribute name="title">
+      <string>BW LastCopies</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -24,6 +90,9 @@
     </rect>
    </property>
    <widget class="QMenu" name="menuexit">
+    <property name="whatsThis">
+     <string extracomment="future button to save, exit"/>
+    </property>
     <property name="title">
      <string>exit</string>
     </property>
