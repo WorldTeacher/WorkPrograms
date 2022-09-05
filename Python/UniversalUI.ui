@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>816</width>
+    <height>639</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>816</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuexit">
+    <property name="title">
+     <string>exit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuload">
+    <property name="title">
+     <string>load</string>
+    </property>
+    <addaction name="actionReihe_A"/>
+    <addaction name="separator"/>
+    <addaction name="actionBW_LastCopies"/>
+   </widget>
+   <addaction name="menuexit"/>
+   <addaction name="menuload"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionReihe_A">
+   <property name="text">
+    <string>Reihe A</string>
+   </property>
+  </action>
+  <action name="actionBW_LastCopies">
+   <property name="text">
+    <string>BW LastCopies</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
