@@ -32,12 +32,13 @@ def search(datafile):
         data=f.readlines()
     xmldata=[]
     for line in data:
-        x_data={'title':[],'author':[],'issue':[],'DE-640':[]}
+        x_data={'title':[],'author':[],'issue':[],'DE-640':[],'signature':[]}
         soup=BeautifulSoup(line,"lxml")
         
         x_data['title']=title_search(soup)
         x_data['author']=author_search(soup)
         x_data['issue']=issue_search(soup)
+        x_data['signature']=signature_search(soup)
         xmldata.append(x_data)
         #request.get_xml(x_data['author'], x_data['title'])
         ''' try:
@@ -56,7 +57,10 @@ def title_search(soup):
     title_field=soup1.find("subfield",{"code":"a"})
     soup1=BeautifulSoup(str(title_data),"lxml")
     title_field=soup1.find("subfield",{"code":"a"})
-    title=title_field.text
+    if title_field is not None:
+        title=title_field.text
+    else:
+        title="0"
     #x_data['title']=title
     return title    
 def author_search(soup):
@@ -65,7 +69,7 @@ def author_search(soup):
         soup2=BeautifulSoup(str(author_data),"lxml")
         author_field=soup2.find("subfield",{"code":"a"})
         author=author_field.text
-        print('100:'+author)
+        #print('100:'+author)
         #x_data['author']=author
     except:
         author_data=soup.find("datafield",{"tag":"700"})
@@ -86,6 +90,16 @@ def issue_search(soup):
     except:
         issues="0"
     return issues
+def signature_search(soup):
+    try:
+        signature_data=soup.find("datafield",{"tag":"852"})
+        print(signature_data)
+        soup4=BeautifulSoup(str(signature_data),"lxml")
+        signature_field=soup4.find("subfield",{"code":""})
+        signature=signature_field.text
+    except:
+        signature="0"
+    return signature
 def make_csv(xmldata):
     df=pd.DataFrame(xmldata)
     #create csv at current directory
@@ -103,6 +117,6 @@ def get_request():
 #time.sleep(0.1)
 
 if __name__=="__main__":
-    #search(file)
-    get_request()
+    search(file)
+    #get_request()
     print("done")
