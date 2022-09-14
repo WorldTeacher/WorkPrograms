@@ -6,30 +6,34 @@ import time
 import lxml
 import json
 import logger
-import request
 log=logger.log()
 log.info_general('xmlextract.py started')
-selector=input('select if the run should be a test or a full run (test/full): ')
-if selector=='test':
-    selector_fine=input('select if the run should be a short test or a long test (short/long): ')
-    
-with open('config.json') as config_file:
+   
+with open('settings.json') as config_file:
     config = json.load(config_file)
     log.info_general('config.json loaded')
-if selector=='full':
-    file=config['XML']['Final']
-elif selector=='test':
-    if selector_fine=='short':
-        file=config['XML']['Short']
-    elif selector_fine=='long':
-        file=config['XML']['Long']
-print(file)
+def select():
+    selector=input('select if the run should be a test or a full run (test/full/exit): ')
+    try:
+        if selector=='full':
+            file=config['XML']
+        
+        elif selector=='test':
+            file=config['XML-Test']
+        elif selector=='exit':
+            sys.exit()
+        return file            
+    except:
+        print('wrong input, please try again')
+        select()
 def search(datafile):
     log.info_general('search started')
     print('search started, please wait')
 
     with open(datafile,encoding='utf-8') as f:
         data=f.readlines()
+        length=len(data)
+        print(f'length: {length}')
     xmldata=[]
     for line in data:
         x_data={'title':[],'author':[],'issue':[],'DE-640':[],'signature':[]}
@@ -93,9 +97,8 @@ def issue_search(soup):
 def signature_search(soup):
     try:
         signature_data=soup.find("datafield",{"tag":"852"})
-        print(signature_data)
         soup4=BeautifulSoup(str(signature_data),"lxml")
-        signature_field=soup4.find("subfield",{"code":""})
+        signature_field=soup4.find("subfield",{"code":"c"})
         signature=signature_field.text
     except:
         signature="0"
@@ -111,12 +114,12 @@ def get_request():
     xmldata=[]
     for line in data:
         linearray=line.split('|')
-        print(f'line_author {linearray[0]}')
+        print(f'line_title {linearray[0]}, line_author {linearray[1]}')
         #request.get_xml(line)
     
 #time.sleep(0.1)
 
 if __name__=="__main__":
-    search(file)
-    #get_request()
+    search(select())
+    get_request()
     print("done")
