@@ -5,11 +5,12 @@ import lxml
 import json
 import sys
 from xml.dom import minidom
+from xml.etree import ElementTree as ET
 with open("settings.json") as f:
     settings = json.load(f)
 bib_id=settings['Bibliotheks-ID']
 sigil=settings['Sigel']
-def urlsearch(author,title):
+def urlsearch(author,title,pass_issue):
     #create the urls based on input title and author, and search them for the required metadata fields 
     
     our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}+and+pica.bib%3D{bib_id}&maximumRecords=10&recordSchema=marcxml"
@@ -17,7 +18,7 @@ def urlsearch(author,title):
     data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'all_issues':[],'all_count':[],'DE-640':[]}
     
     #search_our_url(our_url)
-    issue,title,signature,ppn=search_our_url(our_url)
+    issue,title,signature,ppn=search_our_url(our_url,pass_issue)
     data['title']=title
     data['our_issues']=issue
     data['signature']=signature
@@ -26,7 +27,7 @@ def urlsearch(author,title):
     print(data)
 
         #search_all_url(all_url)
-def search_our_url(our_url)-> tuple[list,str,str,str,int]:
+def search_our_url(our_url,pass_issue)-> tuple[list,str,str,str,int]:
     print(our_url)
     issuelist=[]
     count=0
@@ -40,20 +41,28 @@ def search_our_url(our_url)-> tuple[list,str,str,str,int]:
     for datafield in soup.find_all("datafield"):
         #check if datafield 250 exists
         
-
-        if datafield['tag'] == '250': #get all issues
+        if pass_issue != "0":
+            if datafield['tag'] == '250': #get all issues
+                
+                if "subfield" in str(datafield):
+                    for issues_subfield in datafield.find_all("subfield"):
+                        if issues_subfield['code'] == 'a':
+                            if pass_issue in issues_subfield.text:
+                                issuelist.append(issues_subfield.text)
+                                de640=datafield.find_next("datafield",{"tag":"583"})
+                                if "subfield" in str(de640):
+                                    for de640_subfield in de640.find_all("subfield"):
+                                        if de640_subfield['code'] == 'z':
+                                            de640 = de640_subfield.text
+                                else: print("no de640")
+        else:
+            de640=datafield.find_next("datafield",{"tag":"583"})
+            if "subfield" in str(de640):
+                for de640_subfield in de640.find_all("subfield"):
+                    if de640_subfield['code'] == 'z':
+                        de640 = de640_subfield.text
+            else: print("no de640")
             
-            if "subfield" in str(datafield):
-                for issues_subfield in datafield.find_all("subfield"):
-                    if issues_subfield['code'] == 'a':
-
-                        issue = issues_subfield.text
-                        print(issue)
-                        if issue not in issuelist:
-                            issuelist.append(issue)
-        
-         
-        
         if datafield['tag'] == '245': #get title
             if "subfield" in str(datafield):
                 for title_subfield in datafield.find_all("subfield"):
@@ -61,7 +70,6 @@ def search_our_url(our_url)-> tuple[list,str,str,str,int]:
                         title = title_subfield.text
         
         if datafield['tag'] == '924': #get signature, and count how many times the sigil appears
-            count+=1
             sigil_count=0
             if "subfield" in str(datafield):
                 for signature_subfield in datafield.find_all("subfield"):
@@ -72,11 +80,13 @@ def search_our_url(our_url)-> tuple[list,str,str,str,int]:
                             for signature_subfield in datafield.find_all("subfield"):
                                 if signature_subfield['code'] == 'g':
                                     signature = signature_subfield.text  
+        
     #check issueslist 
     if len(issuelist) == 0:
         issuelist.append("0")
-    return issuelist,title,signature,ppn,count
-
+    return issuelist,title,signature,ppn,sigil_count,de640
+def search_global(datafield):
+    pass
 def search_url_xml(our_url) -> int:
     r = requests.get(our_url)
     r.encoding = 'utf-8'
@@ -131,59 +141,121 @@ def search_url_xml(our_url) -> int:
                         
             
 def search_all_url(all_url) -> tuple[list,str]:
-    try:
-        r = requests.get(all_url)
-        r.encoding = 'utf-8'
-        if r.status_code == 200:
-            #count=search_url_xml(all_url)
-            count=0
-            issuelist=[]
-            soup = BeautifulSoup(r.text, 'lxml')
-            for datafield in soup.find_all("datafield"):
-                if datafield['tag'] == '250':
-                    if "subfield" in str(datafield):
-                        for issues_subfield in datafield.find_all("subfield"):
-                            if issues_subfield['code'] == 'a':
-                                issue = issues_subfield.text
-                                if issue not in issuelist:
-                                    issuelist.append(issue)
+    
+    r = requests.get(all_url)
+    r.encoding = 'utf-8'
+    if r.status_code == 200:
+        #count=search_url_xml(all_url)
+        count=0
+        is_list=[]
+        issues=[]
+        de640l=[]
+        soup = BeautifulSoup(r.text, 'lxml')
+        for datafield in soup.find_all("datafield"):
+            
+            #try:
                 
-                #get the amount of datafields with tag 924
-                if datafield['tag'] == '924':
-                    count+=1
-            return issuelist,count
+                if datafield['tag'] == '250': #get all issues
+                    subfield_a = datafield.find_next("subfield",{"code":"a"})
+                    if subfield_a != None:
+                        issue=subfield_a.text
+                        if issue not in issues:
+                            issues.append(issue)
+                    #find all datafields with the tag 924 before the next datafield with the tag 250
+                    datafield_924 = datafield.find_all("datafield",{"tag":"924"})
+                    
+                if datafield['tag'] == "583":
+                    subfield_z = datafield.find_next("subfield",{"code":"z"})
+                    de640=subfield_z.text
+                    #if de640 not in de640l:
+                    de640l.append(de640)
+             
+        for issue in issues:
+            issuelist={'issue':[],'amount':[],'de640':[]}   
+            issuelist['issue'].append(issue)
+            issuelist['amount'].append(issues.count(issue))
+            issuelist['de640'].append(de640l[0])
+            is_list.append(issuelist)
+        print(is_list)
+        #return issues,count
 
-                
-        else:
-            return "no status code 200"
-    except:
-        return False
+            
+    else:
+        print("no status code 200")
+    
 #def manual_search(url)
 def search_our_ppn(ppn):
     our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.ppn%3D{ppn}&maximumRecords=10&recordSchema=marcxml"
 
-def manualsearch(author,title) -> dict[str,list]:
+def manualsearch(author,title,pass_issue) -> dict[str,list]:
     our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}+and+pica.bib%3D{bib_id}&maximumRecords=100&recordSchema=marcxml"
     all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}&maximumRecords=100&recordSchema=marcxml"
-    result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'all_issues':[],'all_count':[],'DE-640':[]}
-    issue,result_title,signature,ppn,count=search_our_url(our_url)
-    
+    result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'all_issues':[],'all_count':[],'DE-640_global':[],'DE-640_local':[]}
+    issue,result_title,signature,ppn,count,de640=search_our_url(our_url,pass_issue)
     result_data['title']=result_title
     result_data['our_issues']=issue
     result_data['signature']=signature
     result_data['ppn']=ppn
     result_data['our_count']=count
-    all_issues,all_count=search_all_url(all_url)
+    result_data['DE-640_local']=de640
+    '''all_issues,all_count=search_all_url(all_url,pass_issue)
     result_data['all_issues']=all_issues
-    result_data['all_count']=all_count
+    result_data['all_count']=all_count'''
+    search_all_url(all_url)
     print(result_data)
     return result_data
 
+
+
+def search_records(all_url,pass_issue) -> tuple[list,str]:
+    
+    r = requests.get(all_url)
+    r.encoding = 'utf-8'
+    if r.status_code == 200:
+        file=r.text
+        #using minidom to parse xml
+        DOMTree = minidom.parseString(file)
+        records=DOMTree.getElementsByTagName("record")
+        for record in records:
+            datafields=record.getElementsByTagName("datafield")
+            for datafield in datafields:
+                if datafield.getAttribute("tag") == "250":
+                    subfields=datafield.getElementsByTagName("subfield")
+                    for subfield in subfields:
+                        if subfield.getAttribute("code") == "a":
+                            issue=subfield.firstChild.data
+                            if issue == pass_issue:
+                                print(issue)
+                                datafields=record.getElementsByTagName("datafield")
+                                for datafield in datafields:
+                                    count=0
+                                    
+                                    if datafield.getAttribute("tag") == "924":
+                                        count+=1
+                                    if datafield.getAttribute("tag") == "583":
+                                        subfields=datafield.getElementsByTagName("subfield")
+                                        for subfield in subfields:
+                                            if subfield.getAttribute("code") == "z":
+                                                de640=subfield.firstChild.data
+                                                print(de640)
+                                    if datafield.getAttribute("tag") == "924":
+                                        #count how many times 924 appears
+                                        
+                                        subfields=datafield.getElementsByTagName("subfield")
+                                        for subfield in subfields:
+                                            if subfield.getAttribute("code") == "g":
+                                                signature=subfield.firstChild.data
+                                                print(signature)
+                                                print(count)
+            #get the number of records
+        '''tree=ET.fromstring(file)
+        for data in tree.iter('records/record'):
+            print(data) '''       
 if __name__ == "__main__":
     #print(urlsearch(title="Java ist auch eine Insel",author="Ullenboom, Christian"))
-    manualsearch(title="Handbuch Mehrsprachigkeits- und Mehrkulturalitätsdidaktik",author="Fäcke, Christiane")
+    #manualsearch(title="Geschichten aus unserer Zeit",author="Hotz, Karl",pass_issue="3. Aufl.")
     #search_our_url("https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3DJava%20ist%20auch%20eine%20Insel+and+pica.all%3DUllenboom,%20Christian+and+pica.bib=20735&maximumRecords=10&recordSchema=marcxml")
-
+    search_records("https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3DGeschichten aus unserer Zeit+and+pica.all%3DHotz, Karl+and+pica.bib%3D20735&maximumRecords=100&recordSchema=marcxml",pass_issue="3. Aufl.")
 '''
 if datafield['tag'] == '245':
                 if "subfield" in str(datafield):
