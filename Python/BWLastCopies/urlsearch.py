@@ -256,7 +256,14 @@ def search_based_on_sto(author,title,pass_issue):
                     print(issue)
                     count=data_len.count(data_len.find_next("datafield", {"tag": "924"}))
                     print(count)
-
+        #use xml to find how many times the tag 924 is mentioned per record
+        #store the amount in a list
+        xml_data=minidom.parseString(r_all.text)
+        #seperate the xml into records based on recordPosition
+        records=xml_data.getElementsByTagName("record")
+        #print content of each record
+        for record in records:
+            print(record.toxml())
 
 
 
