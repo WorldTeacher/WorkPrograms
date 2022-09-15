@@ -263,7 +263,8 @@ def search_based_on_sto(author,title,pass_issue):
         records=xml_data.getElementsByTagName("record")
         #print content of each record
         for record in records:
-            print(record.toxml())
+            print(record.toxml()) #finds each record and enables to use it in the search
+            
 
 
 
