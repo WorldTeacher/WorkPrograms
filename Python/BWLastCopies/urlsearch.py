@@ -1,4 +1,5 @@
 
+from types import NoneType
 import requests
 from bs4 import BeautifulSoup
 import lxml
@@ -152,7 +153,9 @@ def search_all_url(all_url) -> tuple[list,str]:
         de640l=[]
         soup = BeautifulSoup(r.text, 'lxml')
         for datafield in soup.find_all("datafield"):
-            
+            #iterate through all datafields
+            #if next datafield is 250, get all issues
+
             #try:
                 
                 if datafield['tag'] == '250': #get all issues
@@ -186,9 +189,88 @@ def search_all_url(all_url) -> tuple[list,str]:
 #def manual_search(url)
 def search_our_ppn(ppn):
     our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.ppn%3D{ppn}&maximumRecords=10&recordSchema=marcxml"
+def search_based_on_sto(author,title,pass_issue):
+    our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}+and+pica.bib%3D{bib_id}&maximumRecords=100&recordSchema=marcxml"
+    all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}&maximumRecords=100&recordSchema=marcxml"
+    result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'all_issues':[],'all_count':[],'DE-640_global':[],'DE-640_local':[]}
+    print(our_url)
+    all_issue=[]
+    r = requests.get(our_url)
+    r.encoding = 'utf-8'
+    if r.status_code == 200:
+        tags_to_check = ["245", "250", "583", "924"]
+        data = (
+            BeautifulSoup(r.text, features="xml")
+            .find_all("datafield", tag=tags_to_check)
+        )
+        
+        for datafield in data:
+            subfield_a = datafield.find_next("subfield", {"code": "a"})
+            subfield_g = datafield.find_next("subfield", {"code": "g"})
+            subfield_z = datafield.find_next("subfield", {"code": "z"})
+            if pass_issue != "0":
 
+                if pass_issue in subfield_a:
+                    
+                    title_data=datafield.find_previous("datafield", {"tag": "245"}) 
+                    title=title_data.find_next("subfield", {"code": "a"}).text
+                    
+                    #print(title, pass_issue)
+                    de_640_data=datafield.find_next("datafield", {"tag": "583"})
+                    de_640=de_640_data.find_next("subfield", {"code": "z"}).text
+                    signature_data=datafield.find_previous("datafield", {"tag": "924"})
+                    count=datafield.find_all("datafield", {"tag": "924"})
+                    count=len(count)
+                    signature=signature_data.find_next("subfield", {"code": "g"}).text
+                    #print(de_640, signature)
+    
+    #global search below this line
+    r_all = requests.get(all_url)
+    r_all.encoding = 'utf-8'
+    if r.status_code == 200:
+        tags_to_check = ["245", "250", "583", "924"]
+        data_all = (
+            BeautifulSoup(r_all.text, features="xml")
+            .find_all("datafield", tag=tags_to_check)
+        )
+        for datafield in data_all:
+            subfield_a = datafield.find_next("subfield", {"code": "a"})
+
+            if title in subfield_a:
+                #print(datafield) #validate to see if filter works
+                all_issues_data=datafield.find_next("datafield", {"tag": "250"})
+                try:
+                    all_issues=all_issues_data.find_next("subfield", {"code": "a"}).text
+                    if all_issues not in all_issue:
+                        all_issue.append(all_issues)
+                except AttributeError:
+                    print("no issues found")
+        #use the issue to find how many times the tag 924 is mentioned
+        #store the amount in a list
+        tags=["245","924"]
+        data_len=BeautifulSoup(r_all.text, features="xml").find_all(datafield,tag=tags)
+        for datafield in data_len:
+            subfield_a=datafield.find_next("subfield",{"code":"a"})
+            for issue in all_issue:
+                if issue in subfield_a:
+                    print(issue)
+                    count=data_len.count(data_len.find_next("datafield", {"tag": "924"}))
+                    print(count)
+
+
+
+
+    #set data
+    result_data['title'].append(title)
+    result_data['our_issues'].append(pass_issue)
+    result_data['signature'].append(signature)
+    result_data['our_count'].append(count)
+    result_data['ppn'].append("N/A")
+    result_data['all_issues'].append(all_issue)
+    print(result_data)
 def manualsearch(author,title,pass_issue) -> dict[str,list]:
     our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}+and+pica.bib%3D{bib_id}&maximumRecords=100&recordSchema=marcxml"
+    
     all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}&maximumRecords=100&recordSchema=marcxml"
     result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'all_issues':[],'all_count':[],'DE-640_global':[],'DE-640_local':[]}
     issue,result_title,signature,ppn,count,de640=search_our_url(our_url,pass_issue)
@@ -255,7 +337,8 @@ if __name__ == "__main__":
     #print(urlsearch(title="Java ist auch eine Insel",author="Ullenboom, Christian"))
     #manualsearch(title="Geschichten aus unserer Zeit",author="Hotz, Karl",pass_issue="3. Aufl.")
     #search_our_url("https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3DJava%20ist%20auch%20eine%20Insel+and+pica.all%3DUllenboom,%20Christian+and+pica.bib=20735&maximumRecords=10&recordSchema=marcxml")
-    search_records("https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3DGeschichten aus unserer Zeit+and+pica.all%3DHotz, Karl+and+pica.bib%3D20735&maximumRecords=100&recordSchema=marcxml",pass_issue="3. Aufl.")
+    #search_records("https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3DGeschichten aus unserer Zeit+and+pica.all%3DHotz, Karl+and+pica.bib%3D20735&maximumRecords=100&recordSchema=marcxml",pass_issue="3. Aufl.")
+    search_based_on_sto(author="Hotz, Karl", title="Geschichten aus unserer Zeit",pass_issue="3. Aufl.")
 '''
 if datafield['tag'] == '245':
                 if "subfield" in str(datafield):

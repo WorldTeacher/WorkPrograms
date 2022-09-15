@@ -7,8 +7,8 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import urlsearch
-
+import urlsearch,os, json as json
+import atexit
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -187,7 +187,7 @@ class Ui_MainWindow(object):
         self.graphicsView.setInteractive(False)
         self.graphicsView.setObjectName("graphicsView")
         self.bibid = QtWidgets.QLabel(self.manual)
-        self.bibid.setGeometry(QtCore.QRect(20, 150, 71, 16))
+        self.bibid.setGeometry(QtCore.QRect(20, 150, 81, 16))
         self.bibid.setObjectName("bibid")
         self.bib_id_input = QtWidgets.QLineEdit(self.manual)
         self.bib_id_input.setGeometry(QtCore.QRect(100, 150, 41, 20))
@@ -214,7 +214,7 @@ class Ui_MainWindow(object):
         self.actionReihe_A.setObjectName("actionReihe_A")
         self.actionBW_LastCopies = QtGui.QAction(MainWindow)
         self.actionBW_LastCopies.setObjectName("actionBW_LastCopies")
-
+        self.get_data_from_settings()
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         self.tabwidget_auto_manual.setCurrentIndex(1)
@@ -264,8 +264,9 @@ class Ui_MainWindow(object):
             our_count=result['our_count']
             all_issues=result['all_issues']
             all_count=result['all_count']
+            ppn=result['ppn']
             notification_1=f'Die Suche nach Titel: {title}, Autor: {author} ergab folgendes Ergebnis:'
-            notification_manual=f'Lokal: Anzahl: {our_count}, Auflage(n): {our_issues}, Signatur: {our_signature}'
+            notification_manual=f'Lokal: Anzahl: {our_count}, Auflage(n): {our_issues}, Signatur: {our_signature}, PPN: {ppn}'
             notification_3=f'Gesamt: Anzahl: {all_count}, Auflage(n): {all_issues}'
             #print(f'{notification_1}\n{notification_manual}\n{notification_3}')
             self.result_bwl_manual.setPlainText(f'{notification_1}\n{notification_manual}\n{notification_3}')
@@ -276,8 +277,35 @@ class Ui_MainWindow(object):
         title=self.title_input.toPlainText()
         #print(f'author: {author}, title: {title}')
         return author,title  
-
-
+    def get_data_from_settings(self):
+        #get data from settings.json
+        #search gui-settings.json in same directory as this file
+        #if not found, use default settings
+        try:
+            if os.path.isfile('gui-settings.json'):
+                with open('gui-settings.json') as f:
+                    data = json.load(f)
+                self.bib_id_input.setText(data['Bibliotheks-ID'])
+                self.sigi_input.setText(data['Sigel'])
+                #self.bib_id_input.setPlainText(data['bibid'])
+                #self.sigi_input.setPlainText(data['sigel'])
+        except FileNotFoundError:
+            print('gui-settings.json does not exist, loading from settings.json')
+            with open('gui-settings.json') as f:
+                data = json.load(f)
+            self.bib_id_input.setText(data['Bibliotheks-ID'])
+            self.sigi_input.setText(data['Sigel'])
+    def save_data_to_settings(self):
+        #save data to settings.json
+        bibid=self.bib_id_input.text()
+        sigel=self.sigi_input.text()
+        data = {
+            'Bibliotheks-ID': bibid,
+            'Sigel': sigel
+            }
+        with open('gui-settings.json', 'w') as f:
+            json.dump(data, f,sort_keys=True, indent=4)
+            print(data)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -285,4 +313,6 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    atexit.register(ui.save_data_to_settings)
     sys.exit(app.exec())
+    
