@@ -12,3 +12,4 @@ log/api_log.log
 log/general_log.log
 *.log
 Python/CSV
+data/*
