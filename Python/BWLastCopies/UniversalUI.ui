@@ -38,7 +38,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>0</y>
       <width>1280</width>
       <height>720</height>
@@ -62,11 +62,14 @@
       <height>720</height>
      </size>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="whatsThis">
      <string extracomment="future button to s"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_reihe_a">
      <attribute name="title">
@@ -165,19 +168,6 @@
      <attribute name="title">
       <string>BW LastCopies</string>
      </attribute>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>60</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QTabWidget" name="tabwidget_auto_manual">
       <property name="geometry">
        <rect>
@@ -186,6 +176,9 @@
         <width>1271</width>
         <height>671</height>
        </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
       </property>
       <property name="toolTip">
        <string/>
@@ -311,7 +304,7 @@
          <string>Logs:</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="import_xml_label">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -337,7 +330,7 @@
          <string>log url</string>
         </property>
        </widget>
-       <widget class="QToolButton" name="toolButton">
+       <widget class="QToolButton" name="import_xml_buton">
         <property name="geometry">
          <rect>
           <x>190</x>
@@ -363,6 +356,9 @@
           <width>81</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
          <string/>
@@ -406,6 +402,15 @@
         </property>
         <property name="acceptDrops">
          <bool>true</bool>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_result">
@@ -482,77 +487,6 @@
          <number>-1</number>
         </property>
        </widget>
-       <widget class="QTextEdit" name="author_input">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>110</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="mouseTracking">
-         <bool>true</bool>
-        </property>
-        <property name="toolTip">
-         <string/>
-        </property>
-        <property name="toolTipDuration">
-         <number>10</number>
-        </property>
-        <property name="statusTip">
-         <string/>
-        </property>
-        <property name="whatsThis">
-         <string/>
-        </property>
-        <property name="accessibleName">
-         <string/>
-        </property>
-        <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="tabChangesFocus">
-         <bool>true</bool>
-        </property>
-        <property name="placeholderText">
-         <string>Nachname, Vorname</string>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="title_input">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>110</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="mouseTracking">
-         <bool>true</bool>
-        </property>
-        <property name="toolTip">
-         <string/>
-        </property>
-        <property name="statusTip">
-         <string extracomment="Format: Nachname, Vorname"/>
-        </property>
-        <property name="whatsThis">
-         <string extracomment="Format: Nachname, Vorname"/>
-        </property>
-        <property name="accessibleName">
-         <string extracomment="Format: Nachname, Vorname"/>
-        </property>
-        <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="tabChangesFocus">
-         <bool>true</bool>
-        </property>
-        <property name="placeholderText">
-         <string>Vollständiger Titel</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_title">
         <property name="geometry">
          <rect>
@@ -603,7 +537,7 @@
        <widget class="QLineEdit" name="bib_id_input">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>100</x>
           <y>150</y>
           <width>41</width>
           <height>20</height>
@@ -685,20 +619,79 @@
          <string>TextLabel</string>
         </property>
        </widget>
-       <widget class="QToolButton" name="check">
+       <widget class="QToolButton" name="validate_sigil">
         <property name="geometry">
          <rect>
           <x>280</x>
           <y>150</y>
           <width>25</width>
-          <height>19</height>
+          <height>20</height>
          </rect>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
-         <string>This will test the entered Sigil using the ISIL Database and return an error if the sigil was not found</string>
+         <string>WIP: This will test the entered Sigil using the ISIL Database and return an error if the sigil was not found</string>
         </property>
         <property name="text">
          <string>?</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="author_input">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>110</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Die Bibliotheks-ID kann über winIBW mithilfe des Befehls &quot;s bib&quot; ermittelt werden.</string>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="maxLength">
+         <number>32767</number>
+        </property>
+        <property name="placeholderText">
+         <string>Nachname, Vorname</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="title_input">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>110</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Der Vollständige Titel des Werkes, z.B Java ist auch eine Insel</string>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="maxLength">
+         <number>32767</number>
+        </property>
+        <property name="placeholderText">
+         <string>Vollständiger Titel</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -706,7 +699,6 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionReihe_A">
    <property name="text">
     <string>Reihe A</string>

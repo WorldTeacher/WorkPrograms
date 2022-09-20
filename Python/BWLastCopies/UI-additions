@@ -1,0 +1,61 @@
+import urlsearch,os, json as json
+import atexit
+
+    self.check_bwlastcopies_manual.clicked.connect(self.is_pressed)
+def set_tooltips(self):
+        self.check_bwlastcopies_manual.setToolTip("Prüft den Titel auf BW-LastCopies-Status")
+        self.check_bwlastcopies_manual.setToolTipDuration(2500)
+        self.bibid.setToolTip("Bibliotheks-ID, kann mithilfe von winIBW gefunden werden")
+        self.label_sigil.setToolTip("Sigel, welches u.a für die Fernleihe verwendet wird")
+def is_pressed(self):
+    #check if button self.do_run_bwlastcopies_manual is pressed
+        author,title=self.get_input()
+        result = urlsearch.manualsearch(author,title)
+        title=result['title']
+        our_issues=result['our_issues']
+        our_signature=result['signature']
+        our_count=result['our_count']
+        all_issues=result['all_issues']
+        all_count=result['all_count']
+        ppn=result['ppn']
+        notification_1=f'Die Suche nach Titel: {title}, Autor: {author} ergab folgendes Ergebnis:'
+        notification_manual=f'Lokal: Anzahl: {our_count}, Auflage(n): {our_issues}, Signatur: {our_signature}, PPN: {ppn}'
+        notification_3=f'Gesamt: Anzahl: {all_count}, Auflage(n): {all_issues}'
+        #print(f'{notification_1}\n{notification_manual}\n{notification_3}')
+        self.result_bwl_manual.setPlainText(f'{notification_1}\n{notification_manual}\n{notification_3}')
+        #display result in loginfo_bwl_manual
+        
+def get_input(self):
+    author=self.author_input.toPlainText()
+    title=self.title_input.toPlainText()
+    #print(f'author: {author}, title: {title}')
+    return author,title  
+def get_data_from_settings(self):
+    #get data from settings.json
+    #search gui-settings.json in same directory as this file
+    #if not found, use default settings
+    try:
+        if os.path.isfile('gui-settings.json'):
+            with open('gui-settings.json') as f:
+                data = json.load(f)
+            self.bib_id_input.setText(data['Bibliotheks-ID'])
+            self.sigi_input.setText(data['Sigel'])
+            #self.bib_id_input.setPlainText(data['bibid'])
+            #self.sigi_input.setPlainText(data['sigel'])
+    except FileNotFoundError:
+        print('gui-settings.json does not exist, loading from settings.json')
+        with open('gui-settings.json') as f:
+            data = json.load(f)
+        self.bib_id_input.setText(data['Bibliotheks-ID'])
+        self.sigi_input.setText(data['Sigel'])
+def save_data_to_settings(self):
+    #save data to settings.json
+    bibid=self.bib_id_input.text()
+    sigel=self.sigi_input.text()
+    data = {
+        'Bibliotheks-ID': bibid,
+        'Sigel': sigel
+        }
+    with open('gui-settings.json', 'w') as f:
+        json.dump(data, f,sort_keys=True, indent=4)
+        print(data)
