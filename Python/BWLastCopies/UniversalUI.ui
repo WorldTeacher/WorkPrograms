@@ -35,10 +35,10 @@
    <string>UniversalUI</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="ReiheA_BWL">
     <property name="geometry">
      <rect>
-      <x>-10</x>
+      <x>0</x>
       <y>0</y>
       <width>1280</width>
       <height>720</height>
@@ -69,7 +69,7 @@
      <string extracomment="future button to s"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_reihe_a">
      <attribute name="title">
@@ -83,6 +83,9 @@
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="text">
        <string>ClickMe</string>
@@ -121,6 +124,9 @@
         <width>70</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
       </property>
       <property name="text">
        <string>name</string>
@@ -199,6 +205,9 @@
           <height>23</height>
          </rect>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>ClickMe</string>
         </property>
@@ -253,11 +262,14 @@
         </property>
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>100</x>
           <y>30</y>
           <width>113</width>
           <height>19</height>
          </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
        </widget>
        <widget class="QPushButton" name="save_json">
@@ -268,6 +280,9 @@
           <width>75</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>save config</string>
@@ -281,6 +296,9 @@
           <width>70</width>
           <height>17</height>
          </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>show url</string>
@@ -326,6 +344,9 @@
           <height>17</height>
          </rect>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>log url</string>
         </property>
@@ -333,11 +354,14 @@
        <widget class="QToolButton" name="import_xml_buton">
         <property name="geometry">
          <rect>
-          <x>190</x>
+          <x>210</x>
           <y>30</y>
           <width>25</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
         </property>
         <property name="text">
          <string>...</string>
@@ -383,34 +407,6 @@
         </property>
         <property name="flat">
          <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QPlainTextEdit" name="result_bwl_manual">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>290</y>
-          <width>1171</width>
-          <height>311</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="acceptDrops">
-         <bool>true</bool>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>1</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_result">
@@ -543,8 +539,26 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Die Bibliotheks-ID kann über winIBW mithilfe des Befehls &quot;s bib&quot; ermittelt werden.</string>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="inputMask">
+         <string/>
         </property>
         <property name="text">
          <string/>
@@ -648,7 +662,7 @@
          </rect>
         </property>
         <property name="toolTip">
-         <string>Die Bibliotheks-ID kann über winIBW mithilfe des Befehls &quot;s bib&quot; ermittelt werden.</string>
+         <string>Wenn kein Autor vorhanden ist, eine 0 (Null) eintragen</string>
         </property>
         <property name="inputMask">
          <string/>
@@ -694,10 +708,112 @@
          <bool>true</bool>
         </property>
        </widget>
+       <widget class="QLabel" name="pass_issue">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>150</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Auflage:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="pass_issue_input">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>150</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>3 / 3. Aufl. etc</string>
+        </property>
+        <property name="cursorMoveStyle">
+         <enum>Qt::VisualMoveStyle</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="result_bwl_manual">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>290</y>
+          <width>1171</width>
+          <height>311</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="savecsv">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>220</y>
+          <width>81</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>Save CSV?</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
    </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuEinstellungen">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionbearbeiten"/>
+   </widget>
+   <addaction name="menuDatei"/>
+   <addaction name="menuEinstellungen"/>
   </widget>
   <action name="actionReihe_A">
    <property name="text">
@@ -709,7 +825,28 @@
     <string>BW LastCopies</string>
    </property>
   </action>
+  <action name="actionbearbeiten">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>bearbeiten</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>true</bool>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>author_input</tabstop>
+  <tabstop>title_input</tabstop>
+  <tabstop>bib_id_input</tabstop>
+  <tabstop>sigi_input</tabstop>
+  <tabstop>pass_issue_input</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
