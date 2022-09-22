@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import urlsearch,os, json as json, manualsearch
+import urlsearch,os, json as json, manualsearch, settings
 import atexit
 
 class Ui_MainWindow(object):
@@ -317,7 +317,7 @@ class Ui_MainWindow(object):
         self.actionBW_LastCopies.setText(_translate("MainWindow", "BW LastCopies"))
         self.actionbearbeiten.setText(_translate("MainWindow", "bearbeiten"))
         self.check_bwlastcopies_manual.clicked.connect(self.is_pressed)
-
+        self.actionbearbeiten.triggered.connect(self.edit_config)
     def is_pressed(self):
         #check if button self.do_run_bwlastcopies_manual is pressed
         
@@ -342,6 +342,9 @@ class Ui_MainWindow(object):
         self.result_bwl_manual.setPlainText(f' {notification_1}\n\n{notification_manual}\n\n{notification_3}')
         
         #display result in loginfo_bwl_manual
+    def edit_config(self):
+        #start settings.py
+        os.system('python settings.py')
             
     def get_input(self):
         author=self.author_input.text()

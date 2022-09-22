@@ -131,7 +131,9 @@ def create_notification(notification_data)->str:
     notilist=[]
     spaces="       "
     for issue, count, library in zip(issues,counts,libraries):
-        template=f'{issue}: {count} | Bibliotheken: {library} \n'
+        library_string=", ".join(library)
+        # library_string=library_string.replace(",",", ")
+        template=f'{issue}: {count} | Bibliotheken: {library_string} \n'
         notilist.append(template)
     notification=''.join(notilist)
     print(notification)
