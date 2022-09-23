@@ -20,6 +20,8 @@
         {
             "Short":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/test-short.xml",
             "Long":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/test.xml",
-            "Final":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/AK.P006944_D20220727_T155629.XML"
-        }
+            
+            "Final":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/marcxml bwlastcopies.xml"
+        },
+    "csvfile":"C:/Users/aky547/GitHub/WorkPrograms/Python/BWLastCopies/BWL1.csv"
 }

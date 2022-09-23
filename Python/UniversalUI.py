@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\UniversalUI.ui'
+# Form implementation generated from reading ui file '.\Python\UniversalUI.ui'
 #
 # Created by: PyQt6 UI code generator 6.3.1
 #
@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QApplication, QMainWindow
+import time
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -15,14 +15,34 @@ class Ui_MainWindow(object):
         MainWindow.resize(816, 639)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(60, 70, 75, 23))
+        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1280, 720))
+        self.tabWidget.setWhatsThis("")
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_reihe_a = QtWidgets.QWidget()
+        self.tab_reihe_a.setObjectName("tab_reihe_a")
+        self.pushButton = QtWidgets.QPushButton(self.tab_reihe_a)
+        self.pushButton.setGeometry(QtCore.QRect(720, 540, 75, 23))
         self.pushButton.setObjectName("pushButton")
+        self.progressBar = QtWidgets.QProgressBar(self.tab_reihe_a)
+        self.progressBar.setGeometry(QtCore.QRect(10, 530, 701, 23))
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setMaximum(100)
+        self.progressBar.setMinimum(0)
+        self.progressBar.setObjectName("progressBar")
+        self.name = QtWidgets.QCheckBox(self.tab_reihe_a)
+        self.name.setGeometry(QtCore.QRect(130, 210, 70, 17))
+        self.name.setObjectName("name")
+        self.tabWidget.addTab(self.tab_reihe_a, "")
+        self.tab_bwl = QtWidgets.QWidget()
+        self.tab_bwl.setObjectName("tab_bwl")
+        self.tabWidget.addTab(self.tab_bwl, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 816, 21))
         self.menubar.setObjectName("menubar")
         self.menuexit = QtWidgets.QMenu(self.menubar)
+        self.menuexit.setWhatsThis("")
         self.menuexit.setObjectName("menuexit")
         self.menuload = QtWidgets.QMenu(self.menubar)
         self.menuload.setObjectName("menuload")
@@ -41,24 +61,46 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuload.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+        self.pushButton.setText(_translate("MainWindow", "ClickMe"))
+        self.name.setText(_translate("MainWindow", "name"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_reihe_a), _translate("MainWindow", "Reihe A"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_bwl), _translate("MainWindow", "BW LastCopies"))
         self.menuexit.setTitle(_translate("MainWindow", "exit"))
+        #connect the exit function to the exit button
+        self.menuexit.triggered.connect(self.exit)
         self.menuload.setTitle(_translate("MainWindow", "load"))
         self.actionReihe_A.setText(_translate("MainWindow", "Reihe A"))
-        #add action that opens file dialog when reihe A is clicked
-        self.actionReihe_A.triggered.connect(self.browsefiles)
         self.actionBW_LastCopies.setText(_translate("MainWindow", "BW LastCopies"))
-
-    #add function that opens file dialog
-    def browsefiles(self):
-        filename = QtWidgets.QFileDialog.getOpenFileName()
-        print(filename)
-
+        #connect progress function to the progress bar
+        self.pushButton.clicked.connect(self.progress)
+    	#if name is checked, print Hello
+    
+    #make a function that will check, if the button is clicked, the function printHello will be executed
+    def buttonClicked(self):
+        self.pushButton.clicked.connect(self.printHello)
+    def exit(self):
+        sys.exit()
+    #over the course of 100 seconds, increase the progress bar by 1
+    def progress(self):
+        self.completed = 0
+        while self.completed < 100:
+            self.completed += 1
+            time.sleep(0.01)
+            self.progressBar.setValue(self.completed)
+            
+    #self.name.stateChanged.connect(self.printHello)
+    def printHello(self):
+        count=0
+        if self.name.isChecked():
+            count+=1
+            print(f"Hello,I've been checked {count} times")
+    
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

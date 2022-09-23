@@ -322,24 +322,28 @@ class Ui_MainWindow(object):
         #check if button self.do_run_bwlastcopies_manual is pressed
         
         author,title,issue=self.get_input()
-        
+        auth=author
+
         #result = urlsearch.manualsearch(author,title,pass_issue="3")
-        result=manualsearch.search(author,title,issue)
+        result=manualsearch.search(auth,title,issue)
         title=result['title']
         our_issues=result['our_issues']
         our_signature=result['signature']
-        our_count=result['our_count']
+        #our_count=result['our_count']
         all_issues=result['issue_count']
-
+        bwlastcopies=result['DE-640_count']
         all_count=result['all_count']
         ppn=result['ppn']
         series=result['series']
         if author=="0": author="ohne Angabe"
         notification_1=f'Die Suche nach Titel:  {title}, Autor: {author} ergab folgendes Ergebnis:'
         notification_manual=f'Lokal: Auflage(n): {our_issues}, Signatur(en): {our_signature}, PPN: {ppn}, Serie: {series}'
+        if bwlastcopies==0:
+            notification_2="Keine Exemplare vorhanden oder Exemplar ist noch nicht für BW LastCopies freigegeben"
+        else:
+            notification_2=f'BW LastCopies Status: {bwlastcopies} von {all_count} Exemplaren sind BW LastCopies'
         notification_3=f'Gesamt: Anzahl: {all_count}, Auflage(n):\n{all_issues}'
-        #print(f'{notification_1}\n{notification_manual}\n{notification_3}')
-        self.result_bwl_manual.setPlainText(f' {notification_1}\n\n{notification_manual}\n\n{notification_3}')
+        self.result_bwl_manual.setPlainText(f' {notification_1}\n\n{notification_manual}\n\n{notification_2}\n\n{notification_3}')
         
         #display result in loginfo_bwl_manual
             

@@ -1,0 +1,26 @@
+
+datafields=record.getElementsByTagName("datafield")
+            for datafield in datafields:
+                if datafield.getAttribute("tag") == "250":
+                    subfields=datafield.getElementsByTagName("subfield")
+                    for subfield in subfields:
+                        if subfield.getAttribute("code") == "a":
+                            issue=subfield.firstChild.data
+                            if issue == pass_issue:
+                                datafields=record.getElementsByTagName("datafield")
+                                
+                                if datafield.getAttribute("tag") == "583":
+                                    subfields=datafield.getElementsByTagName("subfield")
+                                    for subfield in subfields:
+                                        if subfield.getAttribute("code") == "z":
+                                            de640=subfield.firstChild.data
+                                if datafield.getAttribute("tag") == "924":
+                                    #count how many times 924 appears
+                                    
+                                    subfields=datafield.getElementsByTagName("subfield")
+                                    for subfield in subfields:
+                                        if subfield.getAttribute("code") == "g":
+                                            signature=subfield.firstChild.data
+                if datafield.getAttribute("tag") == "924":
+                    count+=1
+        print(count,de640,signature) 

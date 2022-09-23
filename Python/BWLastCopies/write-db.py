@@ -23,17 +23,22 @@ def extract_data(jsonfile):
                 adressdata=metadata[field][0]
                 for entry in adressdata:
                     for key in entry:
-                        if key == 'a': 
+                        if key == 'a' is not None: 
                             zdb=entry[key]
-                        if key == 'b':
+                        else: zdb=None
+                        if key == 'b' is not None:
                             dbs=entry[key]
-                        if key == 'd':
+                        else: dbs=None
+                        if key == 'd' is not None:
                             sigel=entry[key]
-                        if key == 'e':
+                        else: sigel=None
+                        if key == 'e' is not None:
                             isil=entry[key]
-                        if key == 'f':
+                        else: isil=None
+                        if key == 'f' is not None:
                             ezb=entry[key]
-                            
+                        else: ezb=None
+
             if field =='009Q':
                     for content in metadata[field]:
                         temp_dict = {k:v for subdict in content for k, v in subdict.items()} 
