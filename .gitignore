@@ -13,3 +13,4 @@ log/general_log.log
 *.log
 Python/CSV
 data/*
+Python/BWLastCopies/output/*
