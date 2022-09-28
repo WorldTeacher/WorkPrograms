@@ -2,7 +2,6 @@ import os
 import sys
 import pandas as pd
 from bs4 import BeautifulSoup
-import time
 import lxml
 import json
 import logger

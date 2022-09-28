@@ -1,6 +1,5 @@
 
 import os #for paths
-import glob
 from turtle import title #searches files in paths
 import pandas as pd #for csv open and read
 import xml.etree.ElementTree as ET #for the url response

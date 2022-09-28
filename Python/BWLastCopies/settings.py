@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'settings.ui'
+# Form implementation generated from reading ui file '.\settings.ui'
 #
 # Created by: PyQt6 UI code generator 6.3.1
 #
@@ -12,17 +12,86 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_settings(object):
     def setupUi(self, settings):
         settings.setObjectName("settings")
-        settings.resize(400, 300)
+        settings.resize(800, 500)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(settings.sizePolicy().hasHeightForWidth())
+        settings.setSizePolicy(sizePolicy)
+        settings.setMinimumSize(QtCore.QSize(800, 500))
+        settings.setMaximumSize(QtCore.QSize(800, 500))
         settings.setMouseTracking(True)
-
+        settings.setAcceptDrops(False)
+        self.buttonBox = QtWidgets.QDialogButtonBox(settings)
+        self.buttonBox.setGeometry(QtCore.QRect(529, 460, 261, 39))
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Discard|QtWidgets.QDialogButtonBox.StandardButton.RestoreDefaults|QtWidgets.QDialogButtonBox.StandardButton.Save)
+        self.buttonBox.setObjectName("buttonBox")
+        self.label = QtWidgets.QLabel(settings)
+        self.label.setGeometry(QtCore.QRect(630, 30, 21, 16))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(settings)
+        self.label_2.setGeometry(QtCore.QRect(660, 30, 31, 16))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(settings)
+        self.label_3.setGeometry(QtCore.QRect(700, 30, 21, 16))
+        self.label_3.setObjectName("label_3")
+        self.value_red = QtWidgets.QSpinBox(settings)
+        self.value_red.setGeometry(QtCore.QRect(620, 50, 42, 22))
+        self.value_red.setMaximum(255)
+        self.value_red.setObjectName("value_red")
+        self.value_green = QtWidgets.QSpinBox(settings)
+        self.value_green.setGeometry(QtCore.QRect(660, 50, 42, 22))
+        self.value_green.setMaximum(255)
+        self.value_green.setObjectName("value_green")
+        self.value_blue = QtWidgets.QSpinBox(settings)
+        self.value_blue.setGeometry(QtCore.QRect(700, 50, 42, 22))
+        self.value_blue.setMaximum(255)
+        self.value_blue.setObjectName("value_blue")
+        self.textEdit = QtWidgets.QTextEdit(settings)
+        self.textEdit.setGeometry(QtCore.QRect(620, 80, 121, 21))
+        self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit.setObjectName("textEdit")
+        self.label_search = QtWidgets.QLabel(settings)
+        self.label_search.setGeometry(QtCore.QRect(20, 20, 40, 16))
+        self.label_search.setObjectName("label_search")
+        #if value of spinbox changes, update color
+        self.value_red.valueChanged.connect(self.updateColor)
+        self.value_green.valueChanged.connect(self.updateColor)
+        self.value_blue.valueChanged.connect(self.updateColor)
         self.retranslateUi(settings)
         QtCore.QMetaObject.connectSlotsByName(settings)
 
     def retranslateUi(self, settings):
         _translate = QtCore.QCoreApplication.translate
         settings.setWindowTitle(_translate("settings", "Settings"))
+        self.label.setText(_translate("settings", "Rot"))
+        self.label_2.setText(_translate("settings", "Grün"))
+        self.label_3.setText(_translate("settings", "Blau"))
+        self.textEdit.setHtml(_translate("settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Farbe</p></body></html>"))
+        self.buttonBox.con
+    def getValues(self):
+        return self.value_red.value(), self.value_green.value(), self.value_blue.value()
+    def updateColor(self):
+        self.textEdit.setStyleSheet("background-color: rgb({}, {}, {});".format(self.value_red.value(), self.value_green.value(), self.value_blue.value()))
+    def write_to_settings(self, field, value):
+        import json 
+        with open("gui-settings.json", "r") as f:
+            settings = json.load(f)
+        data={field:value}
+        settings.update(data)
+        with open("gui-settings.json", "w") as f:
+            json.dump(settings, f)
 
-
+    def set_search_text_color(self, color:tuple):
+        red=color[0]
+        green=color[1]
+        blue=color[2]
+        rgb="rgb({}, {}, {})".format(red, green, blue)
+        self.write_to_settings("search_text_color", rgb)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
