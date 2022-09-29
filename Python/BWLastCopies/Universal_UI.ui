@@ -266,29 +266,13 @@
         <property name="geometry">
          <rect>
           <x>100</x>
-          <y>30</y>
+          <y>40</y>
           <width>113</width>
           <height>19</height>
          </rect>
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="save_json">
-        <property name="geometry">
-         <rect>
-          <x>440</x>
-          <y>10</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>save config</string>
         </property>
        </widget>
        <widget class="QCheckBox" name="show_url">
@@ -329,9 +313,9 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>20</y>
+          <y>40</y>
           <width>71</width>
-          <height>40</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -358,7 +342,7 @@
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>30</y>
+          <y>40</y>
           <width>25</width>
           <height>21</height>
          </rect>
@@ -368,6 +352,67 @@
         </property>
         <property name="text">
          <string>...</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="import_csv_label">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Import CSV:</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="import_csv_buton">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>80</y>
+          <width>25</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="csv_path">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>80</y>
+          <width>113</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Import_description">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>30</y>
+          <width>551</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wenn in der Vergangenheit bereits eine CSV Datei aus der XML Datei erstellt wurde, kann diese über das untere Feld geladen werden. CSV Dateien aus aDIS funktionieren nicht, da diese einen anderen Werttrenner benutzen als dieses Program. &lt;/p&gt;&lt;p&gt;Bsp.: normale CSV (Wert1, Wert2); diese CSV: (Wert1| Wert2)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -443,7 +488,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Tab dient dazu, selbst kleine suchen durchzuführen. Um ein Medium auf BW-LastCopies-Status zu prüfen, wird mindestens der Titel benötigt; der Autor kann ergänzt werden. Nachdem der Titel und ggf. Autor in die unte stehenden Felder eingegeben wurde, auf &amp;quot;Prüfen&amp;quot; klicken und das Ergebnis aus dem unten stehenden Feld ablesen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Tab dient dazu, selbst kleine suchen durchzuführen. Um ein Medium auf BW-LastCopies-Status zu prüfen, wird mindestens der Titel benötigt; der Autor kann ergänzt werden. Nachdem der Titel und ggf. Autor in die unten stehenden Felder eingegeben wurde, auf &amp;quot;Prüfen&amp;quot; klicken und das Ergebnis aus dem unten stehenden Feld ablesen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="textFormat">
          <enum>Qt::RichText</enum>
@@ -906,7 +951,7 @@ p, li { white-space: pre-wrap; }
         <widget class="QLabel" name="tel_nr">
          <property name="geometry">
           <rect>
-           <x>320</x>
+           <x>330</x>
            <y>70</y>
            <width>47</width>
            <height>21</height>
@@ -945,7 +990,7 @@ p, li { white-space: pre-wrap; }
         <widget class="QLabel" name="notification">
          <property name="geometry">
           <rect>
-           <x>300</x>
+           <x>310</x>
            <y>90</y>
            <width>71</width>
            <height>21</height>
@@ -1029,6 +1074,59 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="focusPolicy">
           <enum>Qt::ClickFocus</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_isil_link">
+         <property name="geometry">
+          <rect>
+           <x>330</x>
+           <y>110</y>
+           <width>47</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Isil Link</string>
+         </property>
+        </widget>
+        <widget class="QTextEdit" name="isil_link_out">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>110</y>
+           <width>113</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContents</enum>
+         </property>
+         <property name="lineWrapMode">
+          <enum>QTextEdit::NoWrap</enum>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextBrowserInteraction</set>
          </property>
         </widget>
        </widget>
