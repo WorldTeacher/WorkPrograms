@@ -105,7 +105,7 @@ def signature_search(soup):
 def make_csv(xmldata):
     df=pd.DataFrame(xmldata)
     #create csv at current directory
-    df.to_csv(os.path.join(os.getcwd(),'BWL1.csv'),index=False,sep='|')
+    df.to_csv(os.path.join(os.getcwd(),'BWL.csv'),index=False,sep='|')
 
 def get_request():
     with open('BWL1.csv',encoding='utf-8') as f:
@@ -120,5 +120,5 @@ def get_request():
 
 if __name__=="__main__":
     search(select())
-    get_request()
+    #get_request()
     print("done")
