@@ -2,6 +2,8 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 import urlsearch,os, json, manualsearch, settings, search_db
 import atexit
+from make_csv import Csv
+from settings_data import Settings
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -455,32 +457,16 @@ class Ui_MainWindow(object):
         #print(f'author: {author}, title: {title}')
         return author,title,issue  
 
+    
     def get_data_from_settings(self):
-        #try to load settings from gui_settings.json, if it is not available, load from settings.json and create gui_settings.json on exit
-        try:
-            if os.path.isfile('gui-settings.json'):
-                with open('gui-settings.json') as f:
-                    data = json.load(f)
-                self.bib_id_input.setText(data['Bibliotheks-ID'])
-                self.sigi_input.setText(data['Sigel'])
-                self.ReiheA_BWL.setCurrentIndex(data['Index_ReiheA_BWL'])
-                self.tabwidget_auto_manual.setCurrentIndex(data['Index_Automatic_Manual'])
-                #self.bib_id_input.setPlainText(data['bibid'])
-                #self.sigi_input.setPlainText(data['sigel'])
-        except FileNotFoundError:
-            print('gui-settings.json does not exist, loading from settings.json')
-            try:
-                with open('gui-settings.json') as f:
-                    data = json.load(f)
-                self.bib_id_input.setText(data['Bibliotheks-ID'])
-                self.sigi_input.setText(data['Sigel'])
-            except FileNotFoundError:
-                print('settings.json does not exist, creating new file')
-                self.bib_id_input.setText('Bibliotheks-ID')
-                self.sigi_input.setText('Sigel')
-
+        f=Settings().load_settings()
+        self.bib_id_input.setText(f['Bibliotheks-ID'])
+        self.sigi_input.setText(f['Sigel'])
+        self.ReiheA_BWL.setCurrentIndex(f['Index_ReiheA_BWL'])
+        self.tabwidget_auto_manual.setCurrentIndex(f['Index_Automatic_Manual'])
+    
     def save_data_to_settings(self):
-        #save data to settings.json
+        a=Settings()
         bibid=self.bib_id_input.text()
         sigel=self.sigi_input.text()
         tab_bwl_man_auto=self.tabwidget_auto_manual.currentIndex()
@@ -492,12 +478,7 @@ class Ui_MainWindow(object):
             "Index_ReiheA_BWL":tab_ra_bwlastcopies,
             "tbd":0
             }
-
-        with open('gui-settings.json', 'w') as f:
-            json.dump(data, f, indent=4)
-            # print(data)
-    
-    
+        a.save_settings(data)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
