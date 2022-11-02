@@ -14,3 +14,6 @@ log/general_log.log
 Python/CSV
 data/*
 Python/BWLastCopies/output/*
+sigil - Kopie.db
+sigil copy.db
+Python/BWLastCopies/test-database.db

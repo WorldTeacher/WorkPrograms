@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+from settings_data import Settings
 
 class Ui_settings(object):
     def setupUi(self, settings):
@@ -54,6 +54,9 @@ class Ui_settings(object):
         self.label_search = QtWidgets.QLabel(settings)
         self.label_search.setGeometry(QtCore.QRect(20, 20, 40, 16))
         self.label_search.setObjectName("label_search")
+        self.search_color=QtWidgets.QLineEdit(settings)
+        self.search_color.setGeometry(QtCore.QRect(20, 40, 100, 20))
+        self.search_color.setObjectName("search_color")
         #if value of spinbox changes, update color
         self.value_red.valueChanged.connect(self.updateColor)
         self.value_green.valueChanged.connect(self.updateColor)
@@ -72,31 +75,93 @@ class Ui_settings(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Farbe</p></body></html>"))
-        self.buttonBox.con
-    def getValues(self):
+        self.label_search.setText(_translate("settings", "Suche"))
+        #set buttonbox save to write settings
+        #
+        self.buttonBox.button(QtWidgets.QDialogButtonBox.StandardButton.Save).clicked.connect(self.get_data)
+    def getValues_interactive(self):
         return self.value_red.value(), self.value_green.value(), self.value_blue.value()
+    def getValues(self,lineedit_field:QtWidgets.QLineEdit)->tuple['red','green','blue']:
+        #get split values from lineedit
+        #check if splitter is , or .
+        if ',' in lineedit_field.text():
+            splitter=','
+        elif '.' in lineedit_field.text():
+            splitter='.'
+        else:
+            splitter=' '
+        colorarray=lineedit_field.text().split(splitter)
+        result=(int(colorarray[0]),int(colorarray[1]),int(colorarray[2]))
+        #self.write_to_settings(field=lineedit_field,values=result)
+        return result
+        #
     def updateColor(self):
         self.textEdit.setStyleSheet("background-color: rgb({}, {}, {});".format(self.value_red.value(), self.value_green.value(), self.value_blue.value()))
-    def write_to_settings(self, field, value):
-        import json 
-        with open("gui-settings.json", "r") as f:
-            settings = json.load(f)
-        data={field:value}
-        settings.update(data)
-        with open("gui-settings.json", "w") as f:
-            json.dump(settings, f)
+    def get_data(self):
+        #find all instances of lineedit
+        #get all items in setupUI
+        #get all lineedits
+        for item in self.__dict__.items():
+            #if item is lineedit, print name and value
+            if isinstance(item[1],QtWidgets.QLineEdit):
+                print(item[0],item[1].text())
+                colors=self.getValues(item[1])
+                print(colors)
+                # print(item[1].text().split(','))
+                self.write_to_settings(field=item[1],value=self.getValues(item[1]))
 
+        
+    def write_to_settings(self, field, value):
+        a=Settings()
+        colors=[]
+        for item in self.__dict__.items():
+            #if item is lineedit, print name and value
+            if isinstance(item[1],QtWidgets.QLineEdit):
+                colors.append(self.getValues(item[1]))
+        print(colors)
+        # try:
+        #     with open("gui-color-settings.jsonc", "r") as f:
+        #         settings = json.load(f)
+        #     data={field:value}
+        #     settings.update(data)
+        # except :
+        #     #create file if it doesn't exist
+        #     settings = {field:value}
+        #     with open("gui-color-settings.jsonc", "w") as f:
+        #         json.dump(settings, f)
+        # with open("gui-color-settings.jsonc", "w") as f:
+        #     json.dump(settings, f)
+    # def read_data(self):
+    #     settings_list=['search_color', 'value_red', 'value_green', 'value_blue']
+    #     data={'element_name':'', 'color_values':''}
+    #     #check qlineedit elements with object name _color
+    #     for element in settings_list:
+    #         if element.endswith('_color'):
+    #             #get color from qlineedit
+    #             color = getattr(self, element).text()
+    #             color_array=color.split('.')
+    #             data["color_values"]=color_array
+    #             data["element_name"]=element
+    #             #write color to settings
+    #             self.write_to_settings(element, color_array)
+    #             #print(color)
+        
+    #     print(data)
     def set_search_text_color(self, color:tuple):
         red=color[0]
         green=color[1]
         blue=color[2]
         rgb="rgb({}, {}, {})".format(red, green, blue)
         self.write_to_settings("search_text_color", rgb)
+
+    def launch(self):
+        import sys
+        app = QtWidgets.QApplication(sys.argv)
+        settings = QtWidgets.QWidget()
+        ui = Ui_settings()
+        ui.setupUi(settings)
+        settings.show()
+        sys.exit(app.exec())
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    settings = QtWidgets.QWidget()
     ui = Ui_settings()
-    ui.setupUi(settings)
-    settings.show()
-    sys.exit(app.exec())
+    ui.launch()
