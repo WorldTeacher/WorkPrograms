@@ -9,6 +9,13 @@ bib_id=settings['Bibliotheks-ID']
 sigil=settings['Sigel']
 
 def search(author, title, pass_issue) -> dict[str,list]:
+    """Searches the our url for the title and author.\n
+    Args:
+        author: The author of the book.
+        title: The title of the book.
+        pass_issue: The issue of the book. (optional)
+    Returns a dictionary with the results.
+    Only useful for the UI, as the return is already formatted."""
     if author == '0':
         our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.bib%3D{bib_id}&maximumRecords=100&recordSchema=marcxml"
         all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}&maximumRecords=100&recordSchema=marcxml"
@@ -16,94 +23,21 @@ def search(author, title, pass_issue) -> dict[str,list]:
         our_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}+and+pica.bib%3D{bib_id}&maximumRecords=100&recordSchema=marcxml"
         all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}&maximumRecords=100&recordSchema=marcxml"
 
-    result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'issue_count':[],'DE-640_count':[],'series':[]}
+    #result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'issue_count':[],'DE-640_count':[],'series':[]}
     
     #unsere Daten
     print(f'our_url: {our_url}')
     r=requests.get(our_url)
     r.encoding = 'utf-8'
     if r.status_code== 200:
-        file=r.text
-        DOMtree=minidom.parseString(file)
-        records=DOMtree.getElementsByTagName('record')
-        for record in records:
-            data = record.toxml()
-            tags_to_check=["245","250","583","830","924"]
-            result=(
-            BeautifulSoup(data, features="xml")
-            .find_all("datafield", tag=tags_to_check)
-            )
-            #check if datafield 830 is present
-            for datafield in result:
-                if datafield['tag'] == "245" and title in datafield.find("subfield", code="a").text :
-                
-                #if datafield['tag'] == "245" and datafield.find("subfield", code="a").text == title:
-                    result_data['title']=BeautifulSoup(data,features="xml").find("datafield", tag="245").find("subfield",code="a").text#datafield.find("subfield", code="a").text
-                    result_data['ppn']=record.getElementsByTagName('controlfield')[0].firstChild.data
-                    #check if datafield 830 is present to mark series
-                    if BeautifulSoup(data,features="xml").find("datafield", tag="830"):
-                        result_data['series']="Ja"
-                    else:
-                        result_data['series']="Nein"	
-                    #find all datafields with tag 250
-                    issues=(BeautifulSoup(data, features="xml").find_all("datafield", tag="250"))
-                    result_data['our_count']=len(issues)
-                    for issue in issues:
-                        result_data['our_issues']=issue.find("subfield", code="a").text
-
-                    #if datafield['tag'] == "583" exists, detect last copies value
-                    if BeautifulSoup(data, features="xml").find("datafield", tag="583"):
-                        lastcopies=(BeautifulSoup(data, features="xml").find_all("datafield", tag="583"))                    
-                        lastcopy_store=[]
-                        if len(lastcopies) > 0:
-                            for lastcopy in lastcopies:
-                                #check if subfield z is present
-                                if lastcopy.find("subfield", code="z") is not None:
-                                    lastcopy_store.append(lastcopy.find("subfield", code="z").text)
-                            result_data['DE-640_count']=max(lastcopy_store)
-                        else:
-                            for lastcopy in lastcopies:
-                                result_data['DE-640_count']=lastcopy.find("subfield", code="z").text
-                    else:
-                        result_data['DE-640_count']=0
-                    #find all datafields with tag 924 and subfield code b == sigil
-                    signature=(BeautifulSoup(data, features="xml").find_all("datafield", tag="924"))
-                    for sig in signature:
-                        if sig.find("subfield", code="b").text == sigil:
-                            result_data['signature']=sig.find("subfield", code="g").text
+        result_data=process_our(r,title)
     #all data
     r_all=requests.get(all_url)
     r_all.encoding = 'utf-8'
-    print(r.status_code)
-    global_data={'issue':[],'count':[],'libraries':[]}
-    global_list=[]
+    #print(r.status_code)
+    
     if r_all.status_code==200:
-        file_all=r_all.text
-        DOMtree_all=minidom.parseString(file_all)
-        records_all=DOMtree_all.getElementsByTagName('record')
-        for record_all in records_all:
-            libraries_raw=[]
-            data_all = record_all.toxml()
-            tags_to_check=["250","245","583","830","924"]
-            result_all=(
-            BeautifulSoup(data_all, features="xml")
-            .find_all("datafield", tag=tags_to_check)
-            )
-            for datafield_all in result_all:
-                if datafield_all['tag'] == "245" and datafield_all.find("subfield", code="a").text == title:
-                    issues_all=(BeautifulSoup(data_all, features="xml").find_all("datafield", tag="250"))
-                    for issue_all in issues_all:
-                        global_data['issue']=issue_all.find("subfield", code="a").text
-                    count_of_issues=(BeautifulSoup(data_all, features="xml").find_all("datafield", tag="924"))
-                    for count in count_of_issues:
-                        libraries_raw.append(count.find("subfield", code="b").text)
-                    #remove duplicate entries in libraries_raw
-                    libraries=list(set(libraries_raw))
-                    global_data['libraries']=libraries
-                    count=len(count_of_issues)
-                    global_data['count']=count
-                    global_list.append(global_data)
-                    global_data={'issue':[],'count':[],'libraries':[]}
+        global_list,global_data=process_all(r_all,title)
     counts=len(global_list)
     #sum the count of issues in the global list based on it's length
     global_count=0
@@ -113,11 +47,109 @@ def search(author, title, pass_issue) -> dict[str,list]:
     #print(global_list)
     result_data['all_count']=global_count
     
-    text=colored('Our data:', 'blue',attrs=['bold','underline'])
+    #text=colored('Our data:', 'blue',attrs=['bold','underline'])
     result_data['issue_count']=create_notification(global_list)
     
     #print(f'{text} {result_data}')
     return result_data
+def process_our(r: requests.Response,title) -> dict:
+    """Extracts the relevant data from the response of the our url.\n
+    Args:
+        r: The response of the our url.
+        title: The title of the book. Used to check if the title is correct.
+    Returns:
+        A dictionary containing the relevant data.
+    """
+    result_data={'title':[],'our_issues':[],'signature':[],'our_count':[],'ppn':[],'issue_count':[],'DE-640_count':[],'series':[]}
+    file=r.text
+    DOMtree=minidom.parseString(file)
+    records=DOMtree.getElementsByTagName('record')
+    for record in records:
+        data = record.toxml()
+        tags_to_check=["245","250","583","830","924"]
+        result=(
+        BeautifulSoup(data, features="xml")
+        .find_all("datafield", tag=tags_to_check)
+        )
+        #check if datafield 830 is present
+        for datafield in result:
+            if datafield['tag'] == "245" and title in datafield.find("subfield", code="a").text :
+            
+            #if datafield['tag'] == "245" and datafield.find("subfield", code="a").text == title:
+                result_data['title']=BeautifulSoup(data,features="xml").find("datafield", tag="245").find("subfield",code="a").text#datafield.find("subfield", code="a").text
+                result_data['ppn']=record.getElementsByTagName('controlfield')[0].firstChild.data
+                #check if datafield 830 is present to mark series
+                if BeautifulSoup(data,features="xml").find("datafield", tag="830"):
+                    result_data['series']="Ja"
+                else:
+                    result_data['series']="Nein"	
+                #find all datafields with tag 250
+                issues=(BeautifulSoup(data, features="xml").find_all("datafield", tag="250"))
+                result_data['our_count']=len(issues)
+                for issue in issues:
+                    result_data['our_issues']=issue.find("subfield", code="a").text
+
+                #if datafield['tag'] == "583" exists, detect last copies value
+                if BeautifulSoup(data, features="xml").find("datafield", tag="583"):
+                    lastcopies=(BeautifulSoup(data, features="xml").find_all("datafield", tag="583"))                    
+                    lastcopy_store=[]
+                    if len(lastcopies) > 0:
+                        for lastcopy in lastcopies:
+                            #check if subfield z is present
+                            if lastcopy.find("subfield", code="z") is not None:
+                                lastcopy_store.append(lastcopy.find("subfield", code="z").text)
+                            else:
+                                lastcopy_store.append("0")
+                        result_data['DE-640_count']=max(lastcopy_store)
+                    else:
+                        for lastcopy in lastcopies:
+                            result_data['DE-640_count']=lastcopy.find("subfield", code="z").text
+                else:
+                    result_data['DE-640_count']=0
+                #find all datafields with tag 924 and subfield code b == sigil
+                signature=(BeautifulSoup(data, features="xml").find_all("datafield", tag="924"))
+                for sig in signature:
+                    if sig.find("subfield", code="b").text == sigil:
+                        result_data['signature']=sig.find("subfield", code="g").text
+    return result_data
+
+def process_all(r_all: requests.Response,title) -> dict:
+    """Extracts the relevant data from the response of the all url.\n
+    Args:
+        r_all: The response of the all url.
+        title: The title of the book. Used to check if the title is correct.
+    Returns:
+        global_list: .
+    """
+    global_data={'issue':[],'count':[],'libraries':[]}
+    global_list=[]
+    file_all=r_all.text
+    DOMtree_all=minidom.parseString(file_all)
+    records_all=DOMtree_all.getElementsByTagName('record')
+    for record_all in records_all:
+        libraries_raw=[]
+        data_all = record_all.toxml()
+        tags_to_check=["250","245","583","830","924"]
+        result_all=(
+        BeautifulSoup(data_all, features="xml")
+        .find_all("datafield", tag=tags_to_check)
+        )
+        for datafield_all in result_all:
+            if datafield_all['tag'] == "245" and datafield_all.find("subfield", code="a").text == title:
+                issues_all=(BeautifulSoup(data_all, features="xml").find_all("datafield", tag="250"))
+                for issue_all in issues_all:
+                    global_data['issue']=issue_all.find("subfield", code="a").text
+                count_of_issues=(BeautifulSoup(data_all, features="xml").find_all("datafield", tag="924"))
+                for count in count_of_issues:
+                    libraries_raw.append(count.find("subfield", code="b").text)
+                #remove duplicate entries in libraries_raw
+                libraries=list(set(libraries_raw))
+                global_data['libraries']=libraries
+                count=len(count_of_issues)
+                global_data['count']=count
+                global_list.append(global_data)
+                global_data={'issue':[],'count':[],'libraries':[]}
+    return global_list,global_data
 
 def create_notification(notification_data)->str:
     notification_length=len(notification_data)

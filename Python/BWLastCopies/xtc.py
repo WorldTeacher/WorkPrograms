@@ -12,7 +12,7 @@ class XMLToCSV:
             data=f.readlines()
             length=len(data)
             return length
-    def make_csv(self, file_name):
+    def make_csv(self, file_name, output_name):
         with open(file_name,encoding='utf-8') as f:
             data=f.readlines()
             self.length=len(data)
@@ -29,7 +29,7 @@ class XMLToCSV:
             xmldata.append(x_data)
         df=pd.DataFrame(xmldata)
         #create csv at current directory
-        df.to_csv('BWL.csv',index=False,sep='|') # using the pipe (|) as separator, since the data contains commas
+        df.to_csv(output_name,index=False,sep='|') # using the pipe (|) as separator, since the data contains commas
     def title_search(self, soup):
         title_data=soup.find("datafield",{"tag":"245"})
         soup1=BeautifulSoup(str(title_data),"lxml")
@@ -80,6 +80,6 @@ class XMLToCSV:
 
 if __name__ == "__main__":
     xml=XMLToCSV("AK.P006944_D20220727_T155629.XML")
-    #xml.make_csv('AK.P006944_D20220727_T155629.XML')
+    xml.make_csv(file_name='AK.P006944_D20220727_T155629.XML',output_name="csv")
     print(xml.length)
 
