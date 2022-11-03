@@ -10,7 +10,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 import urlsearch,os, json, manualsearch, settings, search_db
 import atexit
 from make_csv import Csv
-from settings_data import Settings
+# from settings_data import Settings
+from make_jsonc import Settings
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -479,10 +480,12 @@ class Ui_MainWindow(object):
             self.telnr.setText(data['phone'])
             self.mailto.setText(data['mail'])
             adress_notification=self.adress_notification(data['adress'])
+            self.isil_link_out.setHtml(f'<a href="{data["isil_link"]}">{"ISIL"}</a>')
             self.adress_out.setText(adress_notification)
         except Exception as e:
             print(e)
             self.isil_input.setText('Fehler')
+            self.isil_input.setStyleSheet('color:red')
     def adress_notification(self,adress):
         #check lenght of adress
         street=adress[0]
@@ -500,14 +503,23 @@ class Ui_MainWindow(object):
 
     
     def get_data_from_settings(self):
-        f=Settings().load_settings()
-        self.bib_id_input.setText(f['Bibliotheks-ID'])
-        self.sigi_input.setText(f['Sigel'])
-        self.ReiheA_BWL.setCurrentIndex(f['Index_ReiheA_BWL'])
-        self.tabwidget_auto_manual.setCurrentIndex(f['Index_Automatic_Manual'])
+        import os
+        if os.path.isfile('gui-settings.jsonc'):
+            name = 'gui-settings'
+            f=Settings(name).load_settings()
+            self.bib_id_input.setText(f['Bibliotheks-ID'])
+            self.sigi_input.setText(f['Sigel'])
+            self.ReiheA_BWL.setCurrentIndex(f['Index_ReiheA_BWL'])
+            self.tabwidget_auto_manual.setCurrentIndex(f['Index_Automatic_Manual'])
+        else:
+            self.ReiheA_BWL.setCurrentIndex(0)
+            self.tabwidget_auto_manual.setCurrentIndex(0)
+        
     
     def save_data_to_settings(self):
-        a=Settings()
+        name = 'gui-settings'
+        a=Settings(name)
+
         bibid=self.bib_id_input.text()
         sigel=self.sigi_input.text()
         tab_bwl_man_auto=self.tabwidget_auto_manual.currentIndex()
@@ -529,3 +541,4 @@ if __name__ == "__main__":
     MainWindow.show()
     atexit.register(ui.save_data_to_settings)
     sys.exit(app.exec())
+
