@@ -7,7 +7,8 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+import json
+from make_jsonc import Settings
 
 class Ui_settings(object):
     def setupUi(self, settings):
@@ -26,72 +27,193 @@ class Ui_settings(object):
         self.buttonBox.setGeometry(QtCore.QRect(529, 460, 261, 39))
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Discard|QtWidgets.QDialogButtonBox.StandardButton.RestoreDefaults|QtWidgets.QDialogButtonBox.StandardButton.Save)
         self.buttonBox.setObjectName("buttonBox")
-        self.label = QtWidgets.QLabel(settings)
-        self.label.setGeometry(QtCore.QRect(630, 30, 21, 16))
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(settings)
-        self.label_2.setGeometry(QtCore.QRect(660, 30, 31, 16))
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(settings)
-        self.label_3.setGeometry(QtCore.QRect(700, 30, 21, 16))
-        self.label_3.setObjectName("label_3")
+        self.label_red = QtWidgets.QLabel(settings)
+        self.label_red.setGeometry(QtCore.QRect(630, 20, 31, 21))
+        self.label_red.setObjectName("label_red")
+        self.label_green = QtWidgets.QLabel(settings)
+        self.label_green.setGeometry(QtCore.QRect(630, 50, 31, 21))
+        self.label_green.setObjectName("label_green")
+        self.label_blue = QtWidgets.QLabel(settings)
+        self.label_blue.setGeometry(QtCore.QRect(630, 80, 31, 21))
+        self.label_blue.setObjectName("label_blue")
         self.value_red = QtWidgets.QSpinBox(settings)
-        self.value_red.setGeometry(QtCore.QRect(620, 50, 42, 22))
+        self.value_red.setGeometry(QtCore.QRect(660, 20, 80, 22))
+        self.value_red.setMouseTracking(True)
         self.value_red.setMaximum(255)
         self.value_red.setObjectName("value_red")
         self.value_green = QtWidgets.QSpinBox(settings)
-        self.value_green.setGeometry(QtCore.QRect(660, 50, 42, 22))
+        self.value_green.setGeometry(QtCore.QRect(660, 50, 80, 22))
+        self.value_green.setMouseTracking(True)
         self.value_green.setMaximum(255)
         self.value_green.setObjectName("value_green")
         self.value_blue = QtWidgets.QSpinBox(settings)
-        self.value_blue.setGeometry(QtCore.QRect(700, 50, 42, 22))
+        self.value_blue.setGeometry(QtCore.QRect(660, 80, 80, 22))
+        self.value_blue.setMouseTracking(True)
         self.value_blue.setMaximum(255)
         self.value_blue.setObjectName("value_blue")
         self.textEdit = QtWidgets.QTextEdit(settings)
-        self.textEdit.setGeometry(QtCore.QRect(620, 80, 121, 21))
+        self.textEdit.setGeometry(QtCore.QRect(620, 110, 121, 21))
         self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.textEdit.setObjectName("textEdit")
-        self.label_search = QtWidgets.QLabel(settings)
-        self.label_search.setGeometry(QtCore.QRect(20, 20, 40, 16))
-        self.label_search.setObjectName("label_search")
-        #if value of spinbox changes, update color
-        self.value_red.valueChanged.connect(self.updateColor)
-        self.value_green.valueChanged.connect(self.updateColor)
-        self.value_blue.valueChanged.connect(self.updateColor)
+        self.search_color = QtWidgets.QLineEdit(settings)
+        self.search_color.setGeometry(QtCore.QRect(70, 10, 113, 21))
+        self.search_color.setMaxLength(11)
+        self.search_color.setObjectName("search_color")
+        self.search_color_label = QtWidgets.QLabel(settings)
+        self.search_color_label.setGeometry(QtCore.QRect(20, 10, 55, 21))
+        self.search_color_label.setObjectName("search_color_label")
+        self.title_color_label = QtWidgets.QLabel(settings)
+        self.title_color_label.setGeometry(QtCore.QRect(20, 40, 55, 21))
+        self.title_color_label.setObjectName("title_color_label")
+        self.title_color = QtWidgets.QLineEdit(settings)
+        self.title_color.setGeometry(QtCore.QRect(70, 40, 113, 21))
+        self.title_color.setMaxLength(11)
+        self.title_color.setObjectName("title_color")
+        self.save_directory_label = QtWidgets.QLabel(settings)
+        self.save_directory_label.setGeometry(QtCore.QRect(20, 370, 61, 21))
+        self.save_directory_label.setToolTip("")
+        self.save_directory_label.setObjectName("save_directory_label")
+        self.save_directory_auto = QtWidgets.QLineEdit(settings)
+        self.save_directory_auto.setGeometry(QtCore.QRect(120, 370, 113, 20))
+        self.save_directory_auto.setObjectName("save_directory_auto")
+        self.browse_ = QtWidgets.QToolButton(settings)
+        self.browse_.setGeometry(QtCore.QRect(230, 370, 25, 21))
+        self.browse_.setObjectName("browse_")
+        self.line = QtWidgets.QFrame(settings)
+        self.line.setGeometry(QtCore.QRect(0, 130, 791, 16))
+        self.line.setFrameShape(QtWidgets.QFrame.Shape.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.line.setObjectName("line")
+        self.line_2 = QtWidgets.QFrame(settings)
+        self.line_2.setGeometry(QtCore.QRect(10, 320, 771, 16))
+        self.line_2.setFrameShape(QtWidgets.QFrame.Shape.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.label_bwl = QtWidgets.QLabel(settings)
+        self.label_bwl.setGeometry(QtCore.QRect(20, 340, 91, 21))
+        self.label_bwl.setObjectName("label_bwl")
+        self.label = QtWidgets.QLabel(settings)
+        self.label.setGeometry(QtCore.QRect(290, 370, 51, 21))
+        self.label.setObjectName("label")
+        self.csv_name_auto = QtWidgets.QLineEdit(settings)
+        self.csv_name_auto.setGeometry(QtCore.QRect(390, 370, 113, 20))
+        self.csv_name_auto.setObjectName("csv_name_auto")
+        self.label_auto = QtWidgets.QLabel(settings)
+        self.label_auto.setGeometry(QtCore.QRect(80, 370, 31, 21))
+        self.label_auto.setObjectName("label_auto")
+        self.label_auto_2 = QtWidgets.QLabel(settings)
+        self.label_auto_2.setGeometry(QtCore.QRect(350, 370, 31, 21))
+        self.label_auto_2.setObjectName("label_auto_2")
+        self.save_directory_manual = QtWidgets.QLineEdit(settings)
+        self.save_directory_manual.setGeometry(QtCore.QRect(120, 400, 113, 20))
+        self.save_directory_manual.setObjectName("save_directory_manual")
+        self.browse_1 = QtWidgets.QToolButton(settings)
+        self.browse_1.setGeometry(QtCore.QRect(230, 400, 25, 21))
+        self.browse_1.setObjectName("browse_1")
+        self.csv_name_manual = QtWidgets.QLineEdit(settings)
+        self.csv_name_manual.setGeometry(QtCore.QRect(390, 400, 113, 20))
+        self.csv_name_manual.setObjectName("csv_name_manual")
+        self.label_manual = QtWidgets.QLabel(settings)
+        self.label_manual.setGeometry(QtCore.QRect(70, 400, 41, 21))
+        self.label_manual.setObjectName("label_manual")
+        self.labe_manual = QtWidgets.QLabel(settings)
+        self.labe_manual.setGeometry(QtCore.QRect(340, 400, 41, 21))
+        self.labe_manual.setObjectName("labe_manual")
+        self.textBrowser = QtWidgets.QTextBrowser(settings)
+        self.textBrowser.setGeometry(QtCore.QRect(540, 340, 231, 111))
+        self.textBrowser.setObjectName("textBrowser")
+
         self.retranslateUi(settings)
         QtCore.QMetaObject.connectSlotsByName(settings)
 
     def retranslateUi(self, settings):
         _translate = QtCore.QCoreApplication.translate
         settings.setWindowTitle(_translate("settings", "Settings"))
-        self.label.setText(_translate("settings", "Rot"))
-        self.label_2.setText(_translate("settings", "Grün"))
-        self.label_3.setText(_translate("settings", "Blau"))
+        self.label_red.setText(_translate("settings", "Rot"))
+        self.label_green.setText(_translate("settings", "Grün"))
+        self.label_blue.setText(_translate("settings", "Blau"))
+        self.value_red.setToolTip(_translate("settings", "Hier kann ein numerischer Wert von 0 - 255 eingetragen werden, das \"Farbe\" Feld stellt die Farbe dar"))
+        self.value_green.setToolTip(_translate("settings", "Hier kann ein numerischer Wert von 0 - 255 eingetragen werden, das \"Farbe\" Feld stellt die Farbe dar"))
+        self.value_blue.setToolTip(_translate("settings", "Hier kann ein numerischer Wert von 0 - 255 eingetragen werden, das \"Farbe\" Feld stellt die Farbe dar"))
         self.textEdit.setHtml(_translate("settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Farbe</p></body></html>"))
-        
+        self.search_color_label.setText(_translate("settings", "Search"))
+        self.title_color_label.setText(_translate("settings", "Title"))
+        self.save_directory_label.setText(_translate("settings", "Speicherort"))
+        self.save_directory_auto.setToolTip(_translate("settings", "Hier kann ein Speicherort entweder eingetragen werden, oder mithilfe des \"...\" festlegen"))
+        self.browse_.setText(_translate("settings", "..."))
+        self.label_bwl.setText(_translate("settings", "BW LastCopies"))
+        self.label.setText(_translate("settings", "CSV-Name"))
+        self.csv_name_auto.setToolTip(_translate("settings", "Hier kann ein Speicherort entweder eingetragen werden, oder mithilfe des \"...\" festlegen"))
+        self.label_auto.setText(_translate("settings", "auto"))
+        self.label_auto_2.setText(_translate("settings", "auto"))
+        self.save_directory_manual.setToolTip(_translate("settings", "Hier kann ein Speicherort entweder eingetragen werden, oder mithilfe des \"...\" festlegen"))
+        self.browse_1.setText(_translate("settings", "..."))
+        self.csv_name_manual.setToolTip(_translate("settings", "Hier kann ein Speicherort entweder eingetragen werden, oder mithilfe des \"...\" festlegen"))
+        self.label_manual.setText(_translate("settings", "manuell"))
+        self.labe_manual.setText(_translate("settings", "manuell"))
+        self.textBrowser.setHtml(_translate("settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Für die CSV-Dateien kann manuell ein Speicherort festgelegt werden. </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Standard ist: C://Benutzer/Desktop/BWLastCopies/{dateiname}.csv</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Der Name kann konfiguriert werden, wird aber immer ein &quot;auto_&quot; bzw. &quot;manual_&quot; am Anfang haben, um die Dateien zu unterscheiden.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Standard ist hier: &quot;auto_{Datum[JJJJ.MM.TT]}.csv&quot;</p></body></html>"))
+
+        self.buttonBox.button(QtWidgets.QDialogButtonBox.StandardButton.Save).clicked.connect(self.saveSettings)
+        self.buttonBox.button(QtWidgets.QDialogButtonBox.StandardButton.RestoreDefaults).clicked.connect(self.restoreSettings)
     def getValues(self):
         return self.value_red.value(), self.value_green.value(), self.value_blue.value()
-    def updateColor(self):
-        self.textEdit.setStyleSheet("background-color: rgb({}, {}, {});".format(self.value_red.value(), self.value_green.value(), self.value_blue.value()))
-    def write_to_settings(self, field, value):
-        import json 
-        with open("gui-settings.json", "r") as f:
-            settings = json.load(f)
-        data={field:value}
-        settings.update(data)
-        with open("gui-settings.json", "w") as f:
-            json.dump(settings, f)
 
-    def set_search_text_color(self, color:tuple):
-        red=color[0]
-        green=color[1]
-        blue=color[2]
-        rgb="rgb({}, {}, {})".format(red, green, blue)
-        self.write_to_settings("search_text_color", rgb)
+    def updateColor(self):
+        self.textEdit.setStyleSheet("background-color: rgb({}, {}, {});".format(
+            self.value_red.value(), self.value_green.value(), self.value_blue.value()))
+    def get_data_from_settings(self):
+        with open("gui-settings.jsonc", "r") as f:
+            data = json.load(f)
+        self.save_directory_auto.setText(data["save_directory_auto"])
+        self.save_directory_manual.setText(data["save_directory_manual"])
+        self.csv_name_auto.setText(data["csv_name_auto"])
+        self.csv_name_manual.setText(data["csv_name_manual"])
+    def saveSettings(self):
+        """
+        This function saves the settings to the config file
+        Fields:
+            search_color: The color of the search bar
+            title_color: The color of the title bar
+
+        """
+        # find all qlineedits with _color in name using __dict__
+        for key, value in self.__dict__.items():
+            if key.endswith("_color"):
+                self.write_to_settings(key, value.text())
+        self.color_application()
+    def write_to_settings(self, field, value):
+        settings = Settings('gui-settings')
+        data = settings.load_settings()
+        #print(data)
+        data[field] = value
+        settings.update_settings(data)
+        new_data = settings.load_settings()
+        #print(new_data)
+    def restoreSettings(self):
+        
+        settings = Settings('defaults')
+        data = settings.load_settings()
+        self.search_color.setText(data['search_color'])
+        self.title_color.setText(data['title_color'])
+        self.csv_name_auto.setText(data['csv_name_auto'])
+        self.csv_name_manual.setText(data['csv_name_manual'])
+        self.save_directory_auto.setText(data['save_directory_auto'])
+        self.save_directory_manual.setText(data['save_directory_manual'])
+        print(data)
+    def color_application(self):
+        pass
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

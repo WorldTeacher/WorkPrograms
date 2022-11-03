@@ -329,7 +329,7 @@ class Ui_MainWindow(object):
         self.label_isil_link = QtWidgets.QLabel(self.frame)
         self.label_isil_link.setGeometry(QtCore.QRect(330, 110, 47, 21))
         self.label_isil_link.setObjectName("label_isil_link")
-        self.isil_link_out = QtWidgets.QTextEdit(self.frame)
+        self.isil_link_out = QtWidgets.QTextBrowser(self.frame)
         self.isil_link_out.setGeometry(QtCore.QRect(380, 110, 113, 20))
         font = QtGui.QFont()
         font.setPointSize(8)
@@ -340,6 +340,7 @@ class Ui_MainWindow(object):
         self.isil_link_out.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
         self.isil_link_out.setLineWrapMode(QtWidgets.QTextEdit.LineWrapMode.NoWrap)
         self.isil_link_out.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextBrowserInteraction)
+        self.isil_link_out.setOpenExternalLinks(True)
         self.isil_link_out.setObjectName("isil_link_out")
         self.tabwidget_auto_manual.addTab(self.manual, "")
         self.ReiheA_BWL.addTab(self.tab_bwl, "")
@@ -480,7 +481,7 @@ class Ui_MainWindow(object):
             self.telnr.setText(data['phone'])
             self.mailto.setText(data['mail'])
             adress_notification=self.adress_notification(data['adress'])
-            self.isil_link_out.setHtml(f'<a href="{data["isil_link"]}">{"ISIL"}</a>')
+            self.isil_link_out.setHtml(f'<a href="{data["isil_link"]}">{"ISIL-Seite der Einrichtung"}</a>')
             self.adress_out.setText(adress_notification)
         except Exception as e:
             print(e)
@@ -500,13 +501,14 @@ class Ui_MainWindow(object):
         issue=self.pass_issue_input.text()
         #print(f'author: {author}, title: {title}')
         return author,title,issue  
-
     
     def get_data_from_settings(self):
         import os
+        global config
         if os.path.isfile('gui-settings.jsonc'):
             name = 'gui-settings'
             f=Settings(name).load_settings()
+            config=f
             self.bib_id_input.setText(f['Bibliotheks-ID'])
             self.sigi_input.setText(f['Sigel'])
             self.ReiheA_BWL.setCurrentIndex(f['Index_ReiheA_BWL'])
