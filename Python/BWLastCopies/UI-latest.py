@@ -503,9 +503,14 @@ class Ui_MainWindow(object):
         return author,title,issue  
     
     def get_data_from_settings(self):
+        """
+        get data from settings.json
+
+        
+        """
         import os
         global config
-        if os.path.isfile('gui-settings.jsonc'):
+        if os.path.isfile('gui-settings.json'):
             name = 'gui-settings'
             f=Settings(name).load_settings()
             config=f
@@ -519,6 +524,9 @@ class Ui_MainWindow(object):
         
     
     def save_data_to_settings(self):
+        """Saves data to gui-settings.jsonc.\n
+        Using Settings class"""
+
         name = 'gui-settings'
         a=Settings(name)
 
