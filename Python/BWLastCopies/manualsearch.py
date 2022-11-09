@@ -2,13 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from xml.dom import minidom
-from termcolor import colored
 with open("settings.json") as f:
     settings = json.load(f)
 bib_id=settings['Bibliotheks-ID']
 sigil=settings['Sigel']
 
-def search(author, title, pass_issue) -> dict[str,list]:
+def search(author, title, pass_issue=None) -> dict[str,list]:
     """Searches the our url for the title and author.\n
     Args:
         author: The author of the book.
@@ -113,13 +112,17 @@ def process_our(r: requests.Response,title) -> dict:
                         result_data['signature']=sig.find("subfield", code="g").text
     return result_data
 
-def process_all(r_all: requests.Response,title) -> dict:
-    """Extracts the relevant data from the response of the all url.\n
+def process_all(r_all: requests.Response,title:str) -> dict:
+    """
+    This function extracts the relevant data from the response of the all url.\n
+
     Args:
-        r_all: The response of the all url.
-        title: The title of the book. Used to check if the title is correct.
+        r_all (requests.Response): The response of the all url.
+        title (str): The title of the book. Used to check if the title is correct.
+
     Returns:
-        global_list: .
+        list: A list containing the relevant data.
+        dict: A dictionary containing the relevant data.
     """
     global_data={'issue':[],'count':[],'libraries':[]}
     global_list=[]
@@ -168,12 +171,12 @@ def create_notification(notification_data)->str:
         template=f'{issue}: {count} | Bibliotheken: {library_string} \n'
         notilist.append(template)
     notification=''.join(notilist)
-    print(notification)
+    #print(notification)
     return notification
-    
+
     
 if __name__ == "__main__":
     #search(author="Hotz, Karl", title="Geschichten aus unserer Zeit",pass_issue="3. Aufl.")
     #search(author='0',title="Soundcheck",pass_issue="Dr. A, [Nachdr.] - 2003.")
-    search(author='Ullenboom, Christian',title="Java ist auch eine Insel",pass_issue="15")
+    print(search(author='Ullenboom, Christian',title="Java ist auch eine Insel",pass_issue="15"))
     #search(author="Ernst, Franziska", title="Religiöse Bildung im Konfirmandenalter",pass_issue='')

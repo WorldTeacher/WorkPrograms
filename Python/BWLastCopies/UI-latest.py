@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 import urlsearch,os, json, manualsearch, settings, search_db
+import search
 import atexit
 from make_csv import Csv
 # from settings_data import Settings
@@ -451,8 +452,8 @@ class Ui_MainWindow(object):
     def is_pressed(self):
 
         author,title,issue=self.get_input()
-        
-        result=manualsearch.search(author,title,issue)
+        result=search.BookData(author,title).search(format=True)
+        #result=manualsearch.search(author,title,issue)
         title=result['title']
         our_issues=result['our_issues']
         our_signature=result['signature']
