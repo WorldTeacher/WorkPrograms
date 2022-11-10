@@ -1,8 +1,11 @@
 {
     "Bibliotheks-ID":"",
     "Sigel":"",
-    "save-path":"default", 
-    "search-color":"255,255,255", 
-    "title-color":"255,255,255", 
+    "save_path_manual":"default",
+    "save_path_auto":"default",
+    "csv_name_manual":"default",
+    "csv_name_auto":"default", 
+    "search_color":"255,255,255", 
+    "title_color":"255,255,255", 
     "tbd":""
 }
