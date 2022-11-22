@@ -75,13 +75,13 @@ class BookData:
             global_count+=global_list[i]['count']
         result_data['all_count']=sum(global_data['count'])
         result_data['all_count']=global_count
-        
+        print(global_list)
         #text=colored('Our data:', 'blue',attrs=['bold','underline'])
         if format==True:
             noti=cn()
-            result_data['issue_count']=cn.create_notification(message=global_list)
+            result_data['issue_count']=noti.create_notification(message=global_list)
         
-        #print(f'{text} {result_data}')
+
         return result_data
     def process_our(self,r: requests.Response,title) -> dict:
         """Extracts the relevant data from the response of the our url.\n
@@ -190,6 +190,6 @@ class BookData:
 
 
 if __name__ == "__main__":
-    book_data=BookData(title="Harry Potter und die Heiligtümer des Todes ", author="Rowling, J. K.").search()
+    book_data=BookData(title="Java ist auch eine Insel", author="Ullenboom, Christian").search(format=True)
     
     print(book_data)

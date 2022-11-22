@@ -60,12 +60,23 @@ import math
 import time
 
 class ReturnStateUntilComplete():
+    """
+    _summary_
+    
+    
+    """
     def __init__(self,length):
         self.list=self.listgenerator(120000)
         self.length=length
         self.value=0
 
-    def listgenerator(self,max_value):
+    def listgenerator(self,max_value)->list[str]:
+        # * Importand
+        # ! This function is used to generate a list of numbers
+        #* TODO
+        # TODO: Make this function more efficient
+        #? Questions
+
         list=[]
         for i in range(max_value):
             list.append(i)
@@ -94,9 +105,23 @@ class ReturnStateUntilComplete():
     def run(self):
         for i in self.count_until_complete():
             print(i)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
+
 if __name__ == '__main__':
-    a=ReturnStateUntilComplete(length=500)
-    #print value of a
-    print(a.value)
+    x=testfunc(1,2)
 
 

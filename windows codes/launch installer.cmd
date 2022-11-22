@@ -1,2 +1,2 @@
-PowerShell.exe -ExecutionPolicy Bypass -File "startup.ps1"
+PowerShell.exe -ExecutionPolicy Bypass -File "wsl.ps1"
 ::EOF

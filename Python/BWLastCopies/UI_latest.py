@@ -7,21 +7,32 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import urlsearch,os, json, manualsearch, settings, search_db
+import urlsearch
+import os
+import json
+import manualsearch
+import settings
+import search_db
+import time
+from transformer import CreateNotification as cn
 import search
 import atexit
 from make_csv import Csv
 # from settings_data import Settings
 from make_jsonc import Settings
 from testing import ReturnStateUntilComplete
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 720)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(1280, 720))
         MainWindow.setMaximumSize(QtCore.QSize(1280, 720))
@@ -30,10 +41,12 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.ReiheA_BWL = QtWidgets.QTabWidget(self.centralwidget)
         self.ReiheA_BWL.setGeometry(QtCore.QRect(0, 0, 1280, 720))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.ReiheA_BWL.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.ReiheA_BWL.sizePolicy().hasHeightForWidth())
         self.ReiheA_BWL.setSizePolicy(sizePolicy)
         self.ReiheA_BWL.setMinimumSize(QtCore.QSize(1280, 720))
         self.ReiheA_BWL.setMaximumSize(QtCore.QSize(1280, 720))
@@ -76,7 +89,8 @@ class Ui_MainWindow(object):
         self.tab_bwl.setObjectName("tab_bwl")
         self.tabwidget_auto_manual = QtWidgets.QTabWidget(self.tab_bwl)
         self.tabwidget_auto_manual.setGeometry(QtCore.QRect(0, 0, 1271, 671))
-        self.tabwidget_auto_manual.setFocusPolicy(QtCore.Qt.FocusPolicy.ClickFocus)
+        self.tabwidget_auto_manual.setFocusPolicy(
+            QtCore.Qt.FocusPolicy.ClickFocus)
         self.tabwidget_auto_manual.setToolTip("")
         self.tabwidget_auto_manual.setObjectName("tabwidget_auto_manual")
         self.Automatic = QtWidgets.QWidget()
@@ -86,12 +100,14 @@ class Ui_MainWindow(object):
         self.do_run_bwlastcopies.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
         self.do_run_bwlastcopies.setObjectName("do_run_bwlastcopies")
         self.progressbar_lastcopies = QtWidgets.QProgressBar(self.Automatic)
-        self.progressbar_lastcopies.setGeometry(QtCore.QRect(10, 610, 1141, 23))
+        self.progressbar_lastcopies.setGeometry(
+            QtCore.QRect(10, 610, 1141, 23))
         self.progressbar_lastcopies.setToolTip("")
         self.progressbar_lastcopies.setToolTipDuration(2)
         self.progressbar_lastcopies.setWhatsThis("")
         self.progressbar_lastcopies.setProperty("value", 0)
-        self.progressbar_lastcopies.setOrientation(QtCore.Qt.Orientation.Horizontal)
+        self.progressbar_lastcopies.setOrientation(
+            QtCore.Qt.Orientation.Horizontal)
         self.progressbar_lastcopies.setObjectName("progressbar_lastcopies")
         self.loginfo_bwl = QtWidgets.QPlainTextEdit(self.Automatic)
         self.loginfo_bwl.setEnabled(True)
@@ -145,15 +161,18 @@ class Ui_MainWindow(object):
         self.manual = QtWidgets.QWidget()
         self.manual.setObjectName("manual")
         self.check_bwlastcopies_manual = QtWidgets.QPushButton(self.manual)
-        self.check_bwlastcopies_manual.setGeometry(QtCore.QRect(460, 210, 81, 23))
-        self.check_bwlastcopies_manual.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+        self.check_bwlastcopies_manual.setGeometry(
+            QtCore.QRect(460, 210, 81, 23))
+        self.check_bwlastcopies_manual.setFocusPolicy(
+            QtCore.Qt.FocusPolicy.NoFocus)
         self.check_bwlastcopies_manual.setToolTip("")
         self.check_bwlastcopies_manual.setToolTipDuration(-1)
         self.check_bwlastcopies_manual.setWhatsThis("")
         self.check_bwlastcopies_manual.setAutoDefault(False)
         self.check_bwlastcopies_manual.setDefault(False)
         self.check_bwlastcopies_manual.setFlat(False)
-        self.check_bwlastcopies_manual.setObjectName("check_bwlastcopies_manual")
+        self.check_bwlastcopies_manual.setObjectName(
+            "check_bwlastcopies_manual")
         self.label_result = QtWidgets.QLabel(self.manual)
         self.label_result.setGeometry(QtCore.QRect(20, 260, 61, 21))
         font = QtGui.QFont()
@@ -171,34 +190,41 @@ class Ui_MainWindow(object):
         self.label_author.setStatusTip("")
         self.label_author.setWhatsThis("")
         self.label_author.setAccessibleName("")
-        self.label_author.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.label_author.setLayoutDirection(
+            QtCore.Qt.LayoutDirection.LeftToRight)
         self.label_author.setAutoFillBackground(False)
         self.label_author.setIndent(-1)
-        self.label_author.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.NoTextInteraction)
+        self.label_author.setTextInteractionFlags(
+            QtCore.Qt.TextInteractionFlag.NoTextInteraction)
         self.label_author.setObjectName("label_author")
         self.label_title = QtWidgets.QLabel(self.manual)
         self.label_title.setGeometry(QtCore.QRect(300, 110, 41, 21))
         self.label_title.setStatusTip("")
         self.label_title.setWhatsThis("")
         self.label_title.setAccessibleName("")
-        self.label_title.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.label_title.setLayoutDirection(
+            QtCore.Qt.LayoutDirection.LeftToRight)
         self.label_title.setAutoFillBackground(False)
         self.label_title.setIndent(-1)
-        self.label_title.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
+        self.label_title.setTextInteractionFlags(
+            QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse)
         self.label_title.setObjectName("label_title")
         self.bibid = QtWidgets.QLabel(self.manual)
         self.bibid.setGeometry(QtCore.QRect(20, 150, 81, 21))
         self.bibid.setObjectName("bibid")
         self.bib_id_input = QtWidgets.QLineEdit(self.manual)
         self.bib_id_input.setGeometry(QtCore.QRect(100, 150, 41, 20))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.bib_id_input.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.bib_id_input.sizePolicy().hasHeightForWidth())
         self.bib_id_input.setSizePolicy(sizePolicy)
         self.bib_id_input.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
         self.bib_id_input.setAutoFillBackground(False)
-        self.bib_id_input.setInputMethodHints(QtCore.Qt.InputMethodHint.ImhDigitsOnly)
+        self.bib_id_input.setInputMethodHints(
+            QtCore.Qt.InputMethodHint.ImhDigitsOnly)
         self.bib_id_input.setInputMask("")
         self.bib_id_input.setText("")
         self.bib_id_input.setMaxLength(10)
@@ -208,7 +234,8 @@ class Ui_MainWindow(object):
         self.label_sigil.setStatusTip("")
         self.label_sigil.setWhatsThis("")
         self.label_sigil.setAccessibleName("")
-        self.label_sigil.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.label_sigil.setLayoutDirection(
+            QtCore.Qt.LayoutDirection.LeftToRight)
         self.label_sigil.setAutoFillBackground(False)
         self.label_sigil.setIndent(-1)
         self.label_sigil.setObjectName("label_sigil")
@@ -239,25 +266,30 @@ class Ui_MainWindow(object):
         self.pass_issue.setObjectName("pass_issue")
         self.pass_issue_input = QtWidgets.QLineEdit(self.manual)
         self.pass_issue_input.setGeometry(QtCore.QRect(370, 150, 113, 20))
-        self.pass_issue_input.setCursorMoveStyle(QtCore.Qt.CursorMoveStyle.VisualMoveStyle)
+        self.pass_issue_input.setCursorMoveStyle(
+            QtCore.Qt.CursorMoveStyle.VisualMoveStyle)
         self.pass_issue_input.setClearButtonEnabled(True)
         self.pass_issue_input.setObjectName("pass_issue_input")
         self.result_bwl_manual = QtWidgets.QTextEdit(self.manual)
         self.result_bwl_manual.setEnabled(True)
         self.result_bwl_manual.setGeometry(QtCore.QRect(20, 290, 1171, 311))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.result_bwl_manual.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.result_bwl_manual.sizePolicy().hasHeightForWidth())
         self.result_bwl_manual.setSizePolicy(sizePolicy)
         self.result_bwl_manual.setMouseTracking(False)
         self.result_bwl_manual.setFocusPolicy(QtCore.Qt.FocusPolicy.ClickFocus)
-        self.result_bwl_manual.setInputMethodHints(QtCore.Qt.InputMethodHint.ImhNone)
+        self.result_bwl_manual.setInputMethodHints(
+            QtCore.Qt.InputMethodHint.ImhNone)
         self.result_bwl_manual.setTabChangesFocus(True)
         self.result_bwl_manual.setDocumentTitle("")
         self.result_bwl_manual.setUndoRedoEnabled(True)
         self.result_bwl_manual.setReadOnly(True)
-        self.result_bwl_manual.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextSelectableByKeyboard|QtCore.Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.result_bwl_manual.setTextInteractionFlags(
+            QtCore.Qt.TextInteractionFlag.TextSelectableByKeyboard | QtCore.Qt.TextInteractionFlag.TextSelectableByMouse)
         self.result_bwl_manual.setObjectName("result_bwl_manual")
         self.savecsv = QtWidgets.QCheckBox(self.manual)
         self.savecsv.setGeometry(QtCore.QRect(20, 210, 81, 21))
@@ -267,7 +299,8 @@ class Ui_MainWindow(object):
         self.chec_status.setGeometry(QtCore.QRect(390, 210, 51, 21))
         self.chec_status.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.chec_status.setWordWrap(False)
-        self.chec_status.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.NoTextInteraction)
+        self.chec_status.setTextInteractionFlags(
+            QtCore.Qt.TextInteractionFlag.NoTextInteraction)
         self.chec_status.setObjectName("chec_status")
         self.frame = QtWidgets.QFrame(self.manual)
         self.frame.setGeometry(QtCore.QRect(630, 110, 541, 161))
@@ -336,11 +369,16 @@ class Ui_MainWindow(object):
         font.setPointSize(8)
         self.isil_link_out.setFont(font)
         self.isil_link_out.setFocusPolicy(QtCore.Qt.FocusPolicy.ClickFocus)
-        self.isil_link_out.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.isil_link_out.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.isil_link_out.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
-        self.isil_link_out.setLineWrapMode(QtWidgets.QTextEdit.LineWrapMode.NoWrap)
-        self.isil_link_out.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextBrowserInteraction)
+        self.isil_link_out.setVerticalScrollBarPolicy(
+            QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.isil_link_out.setHorizontalScrollBarPolicy(
+            QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.isil_link_out.setSizeAdjustPolicy(
+            QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
+        self.isil_link_out.setLineWrapMode(
+            QtWidgets.QTextEdit.LineWrapMode.NoWrap)
+        self.isil_link_out.setTextInteractionFlags(
+            QtCore.Qt.TextInteractionFlag.TextBrowserInteraction)
         self.isil_link_out.setOpenExternalLinks(True)
         self.isil_link_out.setObjectName("isil_link_out")
         self.tabwidget_auto_manual.addTab(self.manual, "")
@@ -385,7 +423,8 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "ClickMe"))
         self.name.setText(_translate("MainWindow", "name"))
         self.loglabel.setText(_translate("MainWindow", "Logs:"))
-        self.ReiheA_BWL.setTabText(self.ReiheA_BWL.indexOf(self.tab_reihe_a), _translate("MainWindow", "Reihe A"))
+        self.ReiheA_BWL.setTabText(self.ReiheA_BWL.indexOf(
+            self.tab_reihe_a), _translate("MainWindow", "Reihe A"))
         self.do_run_bwlastcopies.setText(_translate("MainWindow", "ClickMe"))
         self.show_url.setText(_translate("MainWindow", "show url"))
         self.loglabel_bwlastcopies.setText(_translate("MainWindow", "Logs:"))
@@ -395,31 +434,42 @@ class Ui_MainWindow(object):
         self.import_csv_label.setText(_translate("MainWindow", "Import CSV:"))
         self.import_csv_buton.setText(_translate("MainWindow", "..."))
         self.Import_description.setText(_translate("MainWindow", "<html><head/><body><p>Wenn in der Vergangenheit bereits eine CSV Datei aus der XML Datei erstellt wurde, kann diese über das untere Feld geladen werden. CSV Dateien aus aDIS funktionieren nicht, da diese einen anderen Werttrenner benutzen als dieses Program. </p><p>Bsp.: normale CSV (Wert1, Wert2); diese CSV: (Wert1| Wert2)</p></body></html>"))
-        self.tabwidget_auto_manual.setTabText(self.tabwidget_auto_manual.indexOf(self.Automatic), _translate("MainWindow", "Automatisch"))
-        self.check_bwlastcopies_manual.setStatusTip(_translate("MainWindow", "Prüft den Titel auf BW-LastCopies-Status"))
-        self.check_bwlastcopies_manual.setText(_translate("MainWindow", "Prüfen"))
+        self.tabwidget_auto_manual.setTabText(self.tabwidget_auto_manual.indexOf(
+            self.Automatic), _translate("MainWindow", "Automatisch"))
+        self.check_bwlastcopies_manual.setStatusTip(_translate(
+            "MainWindow", "Prüft den Titel auf BW-LastCopies-Status"))
+        self.check_bwlastcopies_manual.setText(
+            _translate("MainWindow", "Prüfen"))
         self.label_result.setText(_translate("MainWindow", "Ergebnis:"))
         self.description_manual.setText(_translate("MainWindow", "<html><head/><body><p>Dieser Tab dient dazu, selbst kleine suchen durchzuführen. Um ein Medium auf BW-LastCopies-Status zu prüfen, wird mindestens der Titel benötigt; der Autor kann ergänzt werden. Nachdem der Titel und ggf. Autor in die unten stehenden Felder eingegeben wurde, auf &quot;Prüfen&quot; klicken und das Ergebnis aus dem unten stehenden Feld ablesen.</p><p><br/></p></body></html>"))
         self.label_author.setText(_translate("MainWindow", "Autor:"))
         self.label_title.setText(_translate("MainWindow", "Titel:"))
         self.bibid.setText(_translate("MainWindow", "Bibliotheks-ID:"))
-        self.bib_id_input.setToolTip(_translate("MainWindow", "Die Bibliotheks-ID kann über winIBW mithilfe des Befehls \"s bib\" ermittelt werden."))
+        self.bib_id_input.setToolTip(_translate(
+            "MainWindow", "Die Bibliotheks-ID kann über winIBW mithilfe des Befehls \"s bib\" ermittelt werden."))
         self.bib_id_input.setPlaceholderText(_translate("MainWindow", "20735"))
         self.label_sigil.setText(_translate("MainWindow", "Sigel:"))
-        self.sigi_input.setPlaceholderText(_translate("MainWindow", "DE-Frei129"))
-        self.validate_sigil.setToolTip(_translate("MainWindow", "WIP: This will test the entered Sigil using the ISIL Database and return an error if the sigil was not found"))
+        self.sigi_input.setPlaceholderText(
+            _translate("MainWindow", "DE-Frei129"))
+        self.validate_sigil.setToolTip(_translate(
+            "MainWindow", "WIP: This will test the entered Sigil using the ISIL Database and return an error if the sigil was not found"))
         self.validate_sigil.setText(_translate("MainWindow", "?"))
-        self.author_input.setToolTip(_translate("MainWindow", "Wenn kein Autor vorhanden ist, eine 0 (Null) eintragen"))
-        self.author_input.setPlaceholderText(_translate("MainWindow", "Nachname, Vorname"))
-        self.title_input.setToolTip(_translate("MainWindow", "Der Vollständige Titel des Werkes, z.B Java ist auch eine Insel"))
-        self.title_input.setPlaceholderText(_translate("MainWindow", "Vollständiger Titel"))
+        self.author_input.setToolTip(_translate(
+            "MainWindow", "Wenn kein Autor vorhanden ist, eine 0 (Null) eintragen"))
+        self.author_input.setPlaceholderText(
+            _translate("MainWindow", "Nachname, Vorname"))
+        self.title_input.setToolTip(_translate(
+            "MainWindow", "Der Vollständige Titel des Werkes, z.B Java ist auch eine Insel"))
+        self.title_input.setPlaceholderText(
+            _translate("MainWindow", "Vollständiger Titel"))
         self.pass_issue.setText(_translate("MainWindow", "Auflage:"))
-        self.pass_issue_input.setPlaceholderText(_translate("MainWindow", "3 / 3. Aufl. etc"))
+        self.pass_issue_input.setPlaceholderText(
+            _translate("MainWindow", "3 / 3. Aufl. etc"))
         self.result_bwl_manual.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:8.25pt;\"><br /></p></body></html>"))
+                                                  "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                  "p, li { white-space: pre-wrap; }\n"
+                                                  "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                                  "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:8.25pt;\"><br /></p></body></html>"))
         self.savecsv.setText(_translate("MainWindow", "Save CSV?"))
         self.chec_status.setText(_translate("MainWindow", "Loading"))
         self.label_isil.setText(_translate("MainWindow", "Sigel: "))
@@ -431,136 +481,174 @@ class Ui_MainWindow(object):
         self.notification.setText(_translate("MainWindow", "Anmerkung"))
         self.label_isil_link.setText(_translate("MainWindow", "Isil Link"))
         self.isil_link_out.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
-        self.tabwidget_auto_manual.setTabText(self.tabwidget_auto_manual.indexOf(self.manual), _translate("MainWindow", "Manuell"))
-        self.tabwidget_auto_manual.setTabToolTip(self.tabwidget_auto_manual.indexOf(self.manual), _translate("MainWindow", "Hier kann ein einzelner Titel gesucht werden"))
-        self.ReiheA_BWL.setTabText(self.ReiheA_BWL.indexOf(self.tab_bwl), _translate("MainWindow", "BW LastCopies"))
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
+        self.tabwidget_auto_manual.setTabText(self.tabwidget_auto_manual.indexOf(
+            self.manual), _translate("MainWindow", "Manuell"))
+        self.tabwidget_auto_manual.setTabToolTip(self.tabwidget_auto_manual.indexOf(
+            self.manual), _translate("MainWindow", "Hier kann ein einzelner Titel gesucht werden"))
+        self.ReiheA_BWL.setTabText(self.ReiheA_BWL.indexOf(
+            self.tab_bwl), _translate("MainWindow", "BW LastCopies"))
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
-        self.menuEinstellungen.setTitle(_translate("MainWindow", "Einstellungen"))
+        self.menuEinstellungen.setTitle(
+            _translate("MainWindow", "Einstellungen"))
         self.actionReihe_A.setText(_translate("MainWindow", "Reihe A"))
-        self.actionBW_LastCopies.setText(_translate("MainWindow", "BW LastCopies"))
-        self.actionbearbeiten.setText(_translate("MainWindow", "Formatierung bearbeiten"))
-        self.actionbearbeiten.setShortcut(_translate("MainWindow", "Ctrl+Shift+S"))
+        self.actionBW_LastCopies.setText(
+            _translate("MainWindow", "BW LastCopies"))
+        self.actionbearbeiten.setText(_translate(
+            "MainWindow", "Formatierung bearbeiten"))
+        self.actionbearbeiten.setShortcut(
+            _translate("MainWindow", "Ctrl+Shift+S"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.check_bwlastcopies_manual.clicked.connect(self.is_pressed)
         self.actionbearbeiten.triggered.connect(self.edit_config)
         self.search_isil.clicked.connect(self.get_data)
         self.do_run_bwlastcopies.clicked.connect(self.run_bwlastcopies)
+        self.import_xml_buton.clicked.connect(self.select_xml)
+
     def is_pressed(self):
 
-        author,title,issue=self.get_input()
-        result=search.BookData(author,title).search(format=True)
-        #result=manualsearch.search(author,title,issue)
-        title=result['title']
-        our_issues=result['our_issues']
-        our_signature=result['signature']
-        our_count=result['our_count']
-        all_issues=result['issue_count']
+        author, title, issue = self.get_input()
+        result = search.BookData(author=author, title=title).search(format=True)
+        # result=manualsearch.search(author,title,issue)
+        title = result['title']
+        our_issues = result['our_issues']
+        our_signature = result['signature']
+        our_count = result['our_count']
+        all_issues = result['issue_count']
 
-        all_count=result['all_count']
-        ppn=result['ppn']
-        series=result['series']
-        if author=="0": author="ohne Angabe"
-        notification_1=f'Die Suche nach Titel:  {title}, Autor: {author} ergab folgendes Ergebnis:'
-        notification_manual=f'Lokal: Auflage(n): {our_issues}, Signatur(en): {our_signature}, PPN: {ppn}, Serie: {series}'
-        notification_3=f'Gesamt: Anzahl: {all_count}, Auflage(n):\n{all_issues}'
-        self.result_bwl_manual.setText(f' {notification_1}\n\n{notification_manual}\n\n{notification_3}')
-
+        all_count = result['all_count']
+        ppn = result['ppn']
+        series = result['series']
+        if author == "0":
+            author = "ohne Angabe"
+        notification_1 = f'Die Suche nach Titel:  {title}, Autor: {author} ergab folgendes Ergebnis:'
+        notification_manual = f'Lokal: Auflage(n): {our_issues}, Signatur(en): {our_signature}, PPN: {ppn}, Serie: {series}'
+        notification_3 = f'Gesamt: Anzahl: {all_count}, Auflage(n):\n{all_issues}'
+        self.result_bwl_manual.setText(
+            f' {notification_1}\n\n{notification_manual}\n\n{notification_3}')
 
     def run_bwlastcopies(self):
         print("run_bwlastcopies")
-        lengths=200
-        numbers=0
-        #set the length of the progressbar to lenghts
+        lengths = 200
+        numbers = 0
+        # set the length of the progressbar to lenghts
         self.progressbar_lastcopies.setMaximum(lengths)
         self.progressbar_lastcopies.setMinimum(0)
         self.progressbar_lastcopies.setValue(0)
-        #execute ReturnStateUntilComplete
-        a=ReturnStateUntilComplete(lengths)
-        while numbers<lengths+1:
-            
-            self.progressbar_lastcopies.setValue(a.do_stuff(numbers))
-            numbers+=1
-            
+        # execute ReturnStateUntilComplete
+        a = ReturnStateUntilComplete(lengths)
+        while numbers < lengths+1:
 
-        
+            self.progressbar_lastcopies.setValue(a.do_stuff(numbers))
+            numbers += 1
+
     def edit_config(self):
-        #start settings.py
+        # start settings.py
         os.system('python settings.py')
 
     def get_data(self):
-        #check if self.isil_input is empty
-        isil=self.isil_input.text()
+
+        # check if self.isil_input is empty
+        isil = self.isil_input.text()
         try:
-            data=search_db.search_database(isil)
+            data = search_db.search_database(isil)
             self.organame_line.setText(data['name'])
             self.telnr.setText(data['phone'])
             self.mailto.setText(data['mail'])
-            adress_notification=self.adress_notification(data['adress'])
-            self.isil_link_out.setHtml(f'<a href="{data["isil_link"]}">{"ISIL-Seite der Einrichtung"}</a>')
+            noti=cn()
+            adress_notification = noti.adress_notification(data['adress'])
+            self.isil_link_out.setHtml(
+                f'<a href="{data["isil_link"]}">{"ISIL-Seite der Einrichtung"}</a>')
             self.adress_out.setText(adress_notification)
         except Exception as e:
             print(e)
             self.isil_input.setText('Fehler')
             self.isil_input.setStyleSheet('color:red')
-    def adress_notification(self,adress):
-        #check lenght of adress
-        street=adress[0]
-        city=adress[1]
-        zip=adress[2]
-        state=adress[3]
-        adress_notification=f'{street}\n{zip} {city}\n{state}'
-        return adress_notification
+            time.sleep(1)
+            self.isil_input.clear()
+
     def get_input(self):
-        author=self.author_input.text()
-        title=self.title_input.text()
-        issue=self.pass_issue_input.text()
-        #print(f'author: {author}, title: {title}')
-        return author,title,issue  
-    
+        author = self.author_input.text()
+        title = self.title_input.text()
+        issue = self.pass_issue_input.text()
+        return author, title, issue
+
     def get_data_from_settings(self):
         """
         get data from settings.json
 
-        
+
         """
         import os
         global config
         if os.path.isfile('gui-settings.json'):
             name = 'gui-settings'
-            f=Settings(name).load_settings()
-            config=f
+            f = Settings(name).load_settings()
+            config = f
             self.bib_id_input.setText(f['Bibliotheks-ID'])
             self.sigi_input.setText(f['Sigel'])
             self.ReiheA_BWL.setCurrentIndex(f['Index_ReiheA_BWL'])
-            self.tabwidget_auto_manual.setCurrentIndex(f['Index_Automatic_Manual'])
+            self.tabwidget_auto_manual.setCurrentIndex(
+                f['Index_Automatic_Manual'])
         else:
             self.ReiheA_BWL.setCurrentIndex(0)
             self.tabwidget_auto_manual.setCurrentIndex(0)
-        
-    
+
     def save_data_to_settings(self):
         """Saves data to gui-settings.jsonc.\n
         Using Settings class"""
 
         name = 'gui-settings'
-        a=Settings(name)
+        a = Settings(name)
 
-        bibid=self.bib_id_input.text()
-        sigel=self.sigi_input.text()
-        tab_bwl_man_auto=self.tabwidget_auto_manual.currentIndex()
-        tab_ra_bwlastcopies=self.ReiheA_BWL.currentIndex()
+        bibid = self.bib_id_input.text()
+        sigel = self.sigi_input.text()
+        tab_bwl_man_auto = self.tabwidget_auto_manual.currentIndex()
+        tab_ra_bwlastcopies = self.ReiheA_BWL.currentIndex()
         data = {
             "Bibliotheks-ID": bibid,
             "Sigel": sigel,
             "Index_Automatic_Manual": tab_bwl_man_auto,
-            "Index_ReiheA_BWL":tab_ra_bwlastcopies,
-            "tbd":0
-            }
+            "Index_ReiheA_BWL": tab_ra_bwlastcopies,
+            "tbd": 0
+        }
         a.save_settings(data)
+    def select_xml(self):
+        try: 
+            folder=config['xml_folder']
+        except:
+            folder=self.get_base_path()
+            print(folder)
+        file=self.filedialog(data_filter="xml")
+    def filedialog(self, data_filter=None):
+        """
+        Opens a filedialog and returns the path to the file.\n
+
+        Args:
+            - data_filter (str): filter for the filedialog. Defaults to any file.
+        """
+        if data_filter == None:
+            data_filter = "Alle Dateien (*.*)"  # default filter
+        elif data_filter == "xml":
+            data_filter = "XML-Dateien (*.xml)"
+        elif data_filter == "json":
+            data_filter = "JSON-Dateien (*.json)"
+        elif data_filter == "csv":
+            data_filter = "CSV-Dateien (*.csv)"
+        path = QtWidgets.QFileDialog.getOpenFileName(caption='Datei auswählen', filter=data_filter)
+        print(path[0])
+        return path[0]
+    def get_base_path(self):
+        import os, sys
+        if os.name == 'nt':
+            # Windows
+            base_path = "C:\\"
+            #expand to user home
+            base_path = base_path + os.path.expanduser("~")
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -570,4 +658,3 @@ if __name__ == "__main__":
     MainWindow.show()
     atexit.register(ui.save_data_to_settings)
     sys.exit(app.exec())
-
