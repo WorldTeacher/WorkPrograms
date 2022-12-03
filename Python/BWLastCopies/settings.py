@@ -194,6 +194,13 @@ class Ui_settings(object):
                 self.write_to_settings(key, value.text())
         self.color_application()
     def write_to_settings(self, field, value):
+        """
+        _summary_
+
+        Args:
+            - field (_type_): _description_
+            - value (_type_): _description_
+        """
         settings = Settings('gui-settings')
         data = settings.load_settings()
         #print(data)
