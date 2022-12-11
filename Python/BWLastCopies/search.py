@@ -75,7 +75,7 @@ class BookData:
             global_count+=global_list[i]['count']
         result_data['all_count']=sum(global_data['count'])
         result_data['all_count']=global_count
-        print(global_list)
+        # print(global_list)
         #text=colored('Our data:', 'blue',attrs=['bold','underline'])
         if format==True:
             noti=cn()
