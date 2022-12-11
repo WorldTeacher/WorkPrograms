@@ -17,3 +17,5 @@ Python/BWLastCopies/output/*
 Python/BWLastCopies/cleanup/*
 *.ipynb
 .directory
+*.pyc
+
