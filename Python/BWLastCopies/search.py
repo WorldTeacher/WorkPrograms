@@ -33,7 +33,7 @@ class BookData:
             self.all_url=f"https://sru.k10plus.de/opac-de-627!rec=1?version=1.1&operation=searchRetrieve&query=pica.tit%3D{title}+and+pica.all%3D{author}&maximumRecords=100&recordSchema=marcxml"
 
 
-    def search(self,format=False) -> dict[str,list]:
+    def search(self,format=False,iterate=False) -> dict[str,list]:
         """
         This function searches for the specified book in the K10plus database.
 
@@ -77,12 +77,17 @@ class BookData:
         result_data['all_count']=global_count
         # print(global_list)
         #text=colored('Our data:', 'blue',attrs=['bold','underline'])
-        if format==True:
+        if format==True and iterate==True:
+            print("format and iterate")
             noti=cn()
-            result_data['issue_count']=noti.create_notification(message=global_list)
-        
+            result_data['issue_count']=noti.create_notification_iterated(global_list)
+        if format==True:
+            print("format")
+            noti=cn()
+            result_data['issue_count']=noti.create_notification(global_list)
 
         return result_data
+    
     def process_our(self,r: requests.Response,title) -> dict:
         """Extracts the relevant data from the response of the our url.\n
         Args:
@@ -190,6 +195,6 @@ class BookData:
 
 
 if __name__ == "__main__":
-    book_data=BookData(title="Java ist auch eine Insel", author="Ullenboom, Christian").search(format=True)
+    book_data=BookData(title="Java ist auch eine Insel", author="Ullenboom, Christian").search(format=True,iterate=True)
     
     print(book_data)

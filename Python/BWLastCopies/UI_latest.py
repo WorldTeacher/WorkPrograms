@@ -511,8 +511,12 @@ class Ui_MainWindow(object):
     def is_pressed(self):
 
         author, title, issue = self.get_input()
-        result = search.BookData(author=author, title=title).search(format=True)
-        # result=manualsearch.search(author,title,issue)
+        result = search.BookData(author=author, title=title).search(format=True,iterate=True)
+        '''# print(result)
+        # notification=cn()
+        # clean_data=notification.create_notification_iterated(result)
+        # print(clean_data)
+        # result=manualsearch.search(author,title,issue)'''
         title = result['title']
         our_issues = result['our_issues']
         our_signature = result['signature']
@@ -527,8 +531,8 @@ class Ui_MainWindow(object):
         notification_1 = f'Die Suche nach Titel:  {title}, Autor: {author} ergab folgendes Ergebnis:'
         notification_manual = f'Lokal: Auflage(n): {our_issues}, Signatur(en): {our_signature}, PPN: {ppn}, Serie: {series}'
         notification_3 = f'Gesamt: Anzahl: {all_count}, Auflage(n):\n{all_issues}'
-        self.result_bwl_manual.setText(
-            f' {notification_1}\n\n{notification_manual}\n\n{notification_3}')
+        full_notification = f'{notification_1}\n\n{notification_manual}\n\n{notification_3}'
+        self.result_bwl_manual.setText(full_notification)
 
     def run_bwlastcopies(self):
         print("run_bwlastcopies")
@@ -648,7 +652,15 @@ class Ui_MainWindow(object):
             base_path = "C:\\"
             #expand to user home
             base_path = base_path + os.path.expanduser("~")
-
+    def main(self):
+        import sys
+        app = QtWidgets.QApplication(sys.argv)
+        MainWindow = QtWidgets.QMainWindow()
+        ui = Ui_MainWindow()
+        ui.setupUi(MainWindow)
+        MainWindow.show()
+        atexit.register(ui.save_data_to_settings)
+        sys.exit(app.exec())
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
