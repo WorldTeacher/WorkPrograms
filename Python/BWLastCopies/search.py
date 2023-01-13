@@ -81,12 +81,13 @@ class BookData:
             print("format and iterate")
             noti=cn()
             result_data['issue_count']=noti.create_notification_iterated(global_list)
+            return result_data
         if format==True:
             print("format")
             noti=cn()
             result_data['issue_count']=noti.create_notification(global_list)
 
-        return result_data
+            return result_data
     
     def process_our(self,r: requests.Response,title) -> dict:
         """Extracts the relevant data from the response of the our url.\n
